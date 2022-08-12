@@ -1,7 +1,11 @@
+import Streetview from "./Streetview";
+import Map from "./Map";
+
 function App() {
   return (
     <div className="App">
-      <h1>GeoWhere coming soon</h1>
+      <Streetview />
+      <Map />
     </div>
   );
 }

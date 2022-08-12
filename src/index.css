@@ -5,6 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+}
+
+.window-streetview {
+  width: 600px;
+  height: 450px;
+  background-color: #eeeeee;
+}
+
+.window-map {
+  width: 600px;
+  height: 450px;
+  background-color: #eeeeee;
 }
 
 code {
