@@ -1,6 +1,5 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { StreetViewPanorama } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '400px',

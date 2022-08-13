@@ -1,16 +1,21 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { StreetViewPanorama } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+
 
 const containerStyle = {
-  width: '400px',
+  width: '800px',
   height: '400px'
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: 0,
+  lng: -180
 };
+
+const markerPosition = {
+    lat: 37.772,
+    lng: -122.214
+}
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -20,24 +25,16 @@ function MyComponent() {
 
   const [map, setMap] = React.useState(null)
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+        zoom={1}
       >
+        <Marker 
+            //onLoad={ onLoad }
+            position={ markerPosition }
+        />
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
