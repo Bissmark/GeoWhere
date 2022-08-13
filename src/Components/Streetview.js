@@ -12,11 +12,24 @@ function getRandomInRange(from, to, fixed) {
 }
 
 const center = {
-  lat: getRandomInRange(-90, 90, 1),
-  lng: getRandomInRange(-180, 180, 1)
+  lat: 37.869085,
+  lng: -122.254775
 };
 
+// const center = {
+//   lat: getRandomInRange(-28, -36, 1),
+//   lng: getRandomInRange(140, 150, 1)
+// };
 
+// const onLoad = (streetViewService) => {
+//   streetViewService.getPanorama({
+//     location: center, 
+//     radius: 50
+//   }, (data, status) => console.log(
+//     "StreetViewService results",
+//     { data, status }
+//   ))
+// };
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -24,7 +37,7 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
   })
 
-  const [map, setMap] = React.useState(null)
+  const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -39,7 +52,7 @@ function MyComponent() {
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={center + console.log(center)}
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}

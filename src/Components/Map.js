@@ -37,9 +37,9 @@ function getRandomInRange(from, to, fixed) {
 }
 
 const markerPosition = {
-    lat: getRandomInRange(-90, 90, 1),//37.772,
-    lng: getRandomInRange(-90, 90, 1)
-}
+  lat: getRandomInRange(-28, -36, 1),
+  lng: getRandomInRange(140, 150, 1)
+};
 
 
 
@@ -54,8 +54,8 @@ function MyComponent() {
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
-        center={center}
-        zoom={1}
+        center={markerPosition}
+        zoom={5}
         onClick={ console.log('clicked')}
       >
         <Marker 
