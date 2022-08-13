@@ -6,10 +6,17 @@ const containerStyle = {
   height: '400px'
 };
 
+function getRandomInRange(from, to, fixed) {
+  return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+  // .toFixed() returns string, so ' * 1' is a trick to convert to number
+}
+
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: getRandomInRange(-90, 90, 1),
+  lng: getRandomInRange(-180, 180, 1)
 };
+
+
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
