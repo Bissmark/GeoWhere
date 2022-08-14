@@ -6,24 +6,47 @@ const containerStyle = {
   height: '400px'
 };
 
-function getRandomInRange(from, to, fixed) {
-  return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-  // .toFixed() returns string, so ' * 1' is a trick to convert to number
-}
+// function getRandomInRange(from, to, fixed) {
+//   return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+//   // .toFixed() returns string, so ' * 1' is a trick to convert to number
+// }
 
 const center = {
-  lat: 37.869085,
-  lng: -122.254775
+  lat:  -55.625414,
+  lng: -71.222303
 };
 
-// const center = {
-//   lat: getRandomInRange(-28, -36, 1),
-//   lng: getRandomInRange(140, 150, 1)
-// };
+function getRandomInRange(from, to, fixed) {
+    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+    // .toFixed() returns string, so ' * 1' is a trick to convert to number
+}
+
+const RandomLocation = (callback) => {
+  const lat = (Math.random() * 90) - 90;
+  const lng = (Math.random() * 180) - 180;
+
+  const sv = new window.google.maps.streetViewService();
+
+  sv.getPanorama({
+    location: StreetViewPanorama.LatLng(lat, lng),
+    radius: 50
+  }, callback);
+}
+
+const HandeleCallBack = (data, status) => {
+  if (status == 'OK') {
+
+  }
+}
+
+const streetViewStart = {
+  lat: getRandomInRange(-180, 180, 6),
+  lng: getRandomInRange(-90, 90, 6)
+};
 
 // const onLoad = (streetViewService) => {
 //   streetViewService.getPanorama({
-//     location: center, 
+//     location: streetViewStart, 
 //     radius: 50
 //   }, (data, status) => console.log(
 //     "StreetViewService results",
@@ -37,29 +60,36 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
   })
 
-  const [map, setMap] = React.useState(null);
+  const apiKey = "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA";
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
+  console.log(streetViewStart);
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+  // const [map, setMap] = React.useState(null);
+
+  // const onLoad = React.useCallback(function callback(map) {
+  //   const bounds = new window.google.maps.LatLngBounds(streetViewStart);
+  //   map.fitBounds(bounds);
+  //   setMap(map)
+  // }, [])
+
+  // const onUnmount = React.useCallback(function callback(map) {
+  //   setMap(null)
+  // }, [])
 
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center + console.log(center)}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+        //center={center}
+        //zoom={10}
+        //onLoad={onLoad}
+        // onUnmount={onUnmount}
       >
         <StreetViewPanorama className="window-streetview"
-      position={center}
-      visible={true}
+        //apiKey={apiKey}
+        zoom={3}
+        position={ streetViewStart }
+        visible={true}
+        //onLoad={ onLoad }
     />
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
