@@ -22,7 +22,7 @@ function App() {
     })
   }, [])
 
-  const handleLogin = async () => {
+  const handleLogin = async (email) => {
       const { error } = await supabase.auth.signIn({ email });
       console.log(error);
   }
@@ -54,6 +54,7 @@ function App() {
       <div>
         {session? (
             <>
+            <p>Hello, { session.user.email }</p>
             <button onClick={handleLogout}>Logout</button>
             </>
         ) : (

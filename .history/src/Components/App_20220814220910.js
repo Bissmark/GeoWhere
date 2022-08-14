@@ -22,7 +22,7 @@ function App() {
     })
   }, [])
 
-  const handleLogin = async () => {
+  const handleLogin = async (email) => {
       const { error } = await supabase.auth.signIn({ email });
       console.log(error);
   }
@@ -36,7 +36,7 @@ function App() {
   }
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    await supabase.auth.logout();
   }
 
 
@@ -48,14 +48,11 @@ function App() {
     console.log("Scores: ", data);
   }
   console.log(session);
-
   return (
     <div className="App">
       <div>
         {session? (
-            <>
-            <button onClick={handleLogout}>Logout</button>
-            </>
+          <button onClick={handleLogout}>Logout</button>
         ) : (
           <>
           <input type="email" value={ email } onChange={ handleEmail }></input>

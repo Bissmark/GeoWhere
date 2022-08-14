@@ -2,7 +2,7 @@ import Streetview from "./Streetview";
 import Map from "./Map";
 import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
-
+import Auth from '../Auth';
 
 function App() {
   const [scores, setScores] = useState([]);
@@ -22,23 +22,9 @@ function App() {
     })
   }, [])
 
-  const handleLogin = async () => {
-      const { error } = await supabase.auth.signIn({ email });
-      console.log(error);
+  const handleLogin = async (email) => {
+      await supabase.auth.signIn({ email });
   }
-
-  function handleScore(e) {
-    setScores(e.target.onClick);
-  }
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  }
-
 
   async function fetchScore() {
     let { data } = await supabase
@@ -47,21 +33,17 @@ function App() {
     setScores(data)
     console.log("Scores: ", data);
   }
-  console.log(session);
-
   return (
     <div className="App">
       <div>
         {session? (
-            <>
-            <button onClick={handleLogout}>Logout</button>
-            </>
+          <button onClick={handleLogout}>Logout</button>
         ) : (
           <>
           <input type="email" value={ email } onChange={ handleEmail }></input>
           <button onClick={handleLogin}>Login</button>    
           </>
-        )}
+        )};
       </div>
       <Streetview />
       <Map />

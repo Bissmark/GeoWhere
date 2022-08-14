@@ -54,6 +54,7 @@ function App() {
       <div>
         {session? (
             <>
+            <p>Hello, { session.user.email }</p>
             <button onClick={handleLogout}>Logout</button>
             </>
         ) : (
