@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import StreetviewRandom from './Streetview';
 
 const center = {
   lat: 0,
