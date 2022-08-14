@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import StreetviewRandom from './Streetview';
 
 const center = {
   lat: 0,
@@ -41,8 +42,6 @@ const markerPosition = {
   lng: getRandomInRange(140, 150, 1)
 };
 
-
-
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -56,7 +55,7 @@ function MyComponent() {
         mapContainerStyle={containerStyle}
         center={markerPosition}
         zoom={5}
-        onClick={ console.log('clicked')}
+        //onClick={ console.log('clicked')}
       >
         <Marker 
             //onLoad={ onLoad }
