@@ -18,7 +18,7 @@ function App() {
     setScores(data)
     //console.log("Scores: ", data);
   }
- 
+
   return (
     <div className="App">
       <Streetview />
