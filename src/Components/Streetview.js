@@ -1,145 +1,43 @@
 import React, { Component } from 'react'
-import { GoogleMap, useJsApiLoader, StreetViewPanorama, StreetViewPanoramaProps, LoadScript, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '1000px',
+  height: '600px'
 };
-
-// function getRandomInRange(from, to, fixed) {
-//   return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-//   // .toFixed() returns string, so ' * 1' is a trick to convert to number
-// }
-
-// const center = {
-//   lat:  -55.625414,
-//   lng: -71.222303
-// };
-
-function getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-    // .toFixed() returns string, so ' * 1' is a trick to convert to number
-}
-
-// const RandomLocation = (callback) => {
-//   const lat = (Math.random() * 90) - 90;
-//   const lng = (Math.random() * 180) - 180;
-
-//   const sv = new window.google.maps.streetViewService();
-
-//   sv.getPanorama({
-//     location: StreetViewPanorama.LatLng(lat, lng),
-//     radius: 50
-//   }, callback);
-// }
-
-// const HandeleCallBack = (data, status) => {
-//   if (status == 'OK') {
-
-//   }
-// }
-
-const streetViewStart = {
-  lat: getRandomInRange(-180, 180, 3),
-  lng: getRandomInRange(-90, 90, 3)
-};
-
-// const onLoad = (streetViewService) => {
-//   streetViewService.getPanorama({
-//     location: streetViewStart, 
-//     radius: 50
-//   }, (data, status) => console.log(
-//     "StreetViewService results",
-//     { data, status }
-//   ))
-// };
-
-// const MapElements = GoogleMap(props => (
-//   <div>
-//     <GoogleMap>
-//       center={ props.center }
-//     </GoogleMap>
-//   </div>
-// ))
-
-
-// class Streetview extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     console.log(streetViewStart);
-//     this.state = {
-//       lat: this.props.lat,//getRandomInRange(-180, 180, 3),
-//       lng: this.props.lng//getRandomInRange(-90, 90, 3)
-//     }
-//   }
-
-//   render() {
-//     //const { center, markers, zoom } = this.props.state;
-//     //const googleMapsApiKey = 'AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA'
-//     const panOptions = {
-//       position: { 
-//         lat: this.state.lat,
-//         lng: this.state.lng
-//       },
-//       pov: {
-//         heading: 20,
-//         pitch: 2
-//       },
-//       visible: true
-//     }
-    
-//     return <div style={{
-//       width: '100%',
-//       height: '100%',
-//       backgroundColor: '#fff'
-//     }}>
-//       <LoadScript
-//          id='google-map-script'
-//          googleMapsApiKey="AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
-//        >
-//       <GoogleMap
-//         mapContainerStyle={containerStyle}
-//     //center={center}
-//     //zoom={10}
-//     //onLoad={onLoad}
-//     // onUnmount={onUnmount}
-//     >
-//       {
-//         this.state.lat ?
-//          <StreetViewPanorama
-//           //apiKey={ googleMapsApiKey }
-//           StreetViewPanoramaProps={ panOptions }
-//           //position={ streetViewStart }
-//           //visible={true}
-//         /> :
-//         <div className='lmao'></div>
-//       }
-//       </GoogleMap>
-//       </LoadScript>
-//     </div>
-// }
-//   // componentWillReceiveProps(nextProps) {
-//   //   this.setState(nextProps.place);
-//   // }
-// }
 
 const places = [
-  [{ lat: 60.171001,  lng: 24.939350 },  {country: 'Finland'}], // Helsinki, Finland
-  [{ lat: 48.858093,  lng: 2.294694 },   {country: 'France'}], // Paris, France
-  [{ lat: 51.510020,  lng: -0.134730 },  {country: 'Great Britain'}], // London, Great Britain
-  [{ lat: 41.8902,    lng: 12.4922 },      {country: 'Italy'}], // Rome, Italy
-  [{ lat: 25.195302,  lng: 55.272879 },  {country: 'United Arab Emirates'}], // Dubai, United Arab Emirates
-  [{ lat: 1.283404,   lng: 103.863134 },  {country: 'Singapore'}], // Marina Bay, Singapore
-  [{ lat: 29.976768,  lng: 31.135538 },  {country: 'Egypt'}], // Cairo, Egypt
-  [{ lat: 40.757876,  lng: -73.985592 }, {country: 'United States'}], // New York, USA
+  [{ lat: 36.385822,  lng: 127.496827 },  {country: 'South Korea'}], // works
+  //[{ lat: 15.075355459598848,  lng: 33.36925104232831 },   {country: 'Sudan'}], // doesnt work
+  //[{ lat: -22.598826,  lng: -43.238300 },  {country: 'Brazil'}], // doesnt work
+  //[{ lat: 51.130823,    lng: 71.419196 }, {country: 'Kazahstan'}], // works
+  //[{ lat: 23.731066,  lng: 89.760435 },  {country: 'Bangladesh'}], // doesnt work
+  //[{ lat: -32.202210,   lng: 116.302426 },  {country: 'Australia'}], // doesnt work
+  //[{ lat: 17.1456591,  lng: -62.5502343 },  {country: 'Caribbean'}], // doesnt work
+  //[{ lat: 39.050742,  lng: -111.584244 }, {country: 'USA'}], // doesnt works
+  //[{ lat: 46.838152,  lng: -71.194416 }, {country: 'Canada'}], // works
+  //[{ lat: 64.164175,  lng: -22.021422 }, {country: 'Iceland'}], // works
+  //[{ lat: 38.755671,  lng: -9.225757 }, {country: 'Portugal'}], // works
+  //[{ lat: 12.271734,  lng: 109.206220 }, {country: 'Vietnam'}], // works
+
 ];
+
+// 36.38582280878182, 127.49682755641739 Daejeon, South Korea
+// 15.025936608967287, 33.384805043308326 Tamboul, Sudan
+// -22.598826852277597, -43.23830071819701 Rio, Brazil
+// 51.13082338793742, 71.41919672293402 Nur-Sultan, Kazakstan
+// 23.73106673377317, 89.76043547689221 Goalanda, Bangladesh
+// -32.202210152108115, 116.30242628687364 Jarradale State Forest, Western Australia
+// 17.15327060875382, -62.590951818742575 Nevis Peak, Caribbean Islands
+// 12.271734907996098, 109.20622031341209 Nha Trang, Vietnam
+// 39.05074274611721, -111.58424416166466 Mary's Nipple, Utah, USA
+// 46.83815293828832, -71.19441606137913 Quebec City, Canada
+// 64.16417583585351, -22.02142239761667 Reykjavik, Iceland
+// 38.75567191119491, -9.225757596536551 Amadora, Lisbon, Portugal
 
 let currentPlace = places[Math.floor(Math.random() * (places.length))];
 let coordinates = currentPlace[0]; // Get coordinates
 let country = currentPlace[1].country;
-
-
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -147,39 +45,35 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
   })
 
-  const apiKey = "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA";
+  const panoOptions = {
+    pov: {
+      heading: 20,
+      pitch: 2,
+    },
+    addressControl: false,
+    linksControl: false,
+    showRoadLabels: false,
+    fullscreenControl: false,
+    visible: true
+  }
 
-  console.log(streetViewStart);
-
-  const [map, setMap] = React.useState(null);
-
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(streetViewStart);
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+  console.log(coordinates);
 
   return isLoaded ? (
-    // <LoadScript 
-    //     googleMapsApiKey="AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
-    //    > 
       <GoogleMap
         mapContainerStyle={containerStyle}
         //center={center}
         //zoom={10}
         //onLoad={onLoad}
         // onUnmount={onUnmount}
+        //onClick={ }
+        addressControl={false}
       >
-        <StreetViewPanorama className="window-streetview"
+        <StreetViewPanorama
         //apiKey={apiKey}
-        zoom={3}
+        //zoom={3}
         position={ coordinates }
-        //center={ streetViewStart }
-        visible={true}
+        options={panoOptions}
         //onLoad={ onLoad }
     />
         { /* Child components, such as markers, info windows, etc. */ }
