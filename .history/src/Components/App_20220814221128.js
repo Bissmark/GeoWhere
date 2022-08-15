@@ -6,9 +6,9 @@ import supabase from "../supabaseClient";
 
 function App() {
   const [scores, setScores] = useState([]);
-
   const [email, setEmail] = useState('');
-  const [session, setSession] = useState(null);  
+  const [session, setSession] = useState(null);
+  
   
   useEffect(() => {
     fetchScore()
@@ -22,7 +22,7 @@ function App() {
     })
   }, [])
 
-  const handleLogin = async () => {
+  const handleLogin = async (email) => {
       const { error } = await supabase.auth.signIn({ email });
       console.log(error);
   }
@@ -36,7 +36,7 @@ function App() {
   }
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    await supabase.auth.logout();
   }
 
 
@@ -45,7 +45,7 @@ function App() {
     .from('scores')
     .select('*')
     setScores(data)
-    //console.log("Scores: ", data);
+    console.log("Scores: ", data);
   }
   console.log(session);
 
@@ -53,9 +53,10 @@ function App() {
     <div className="App">
       <div>
         {session? (
+          <>
+            <p>Hello, { session.user.email }</p>
             <>
-            <button onClick={handleLogout}>Logout</button>
-            </>
+          </><button onClick={handleLogout}>Logout</button></>
         ) : (
           <>
           <input type="email" value={ email } onChange={ handleEmail }></input>
@@ -68,7 +69,8 @@ function App() {
     </div>
   );
 }
-
+ 
+ 
 
 
 export default App;

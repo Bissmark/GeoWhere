@@ -1,34 +1,14 @@
 import React, { Component } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, LoadScript } from '@react-google-maps/api';
 
 const center = {
   lat: 0,
   lng: -180
 };
 
-// const MapElem = (
-//     <div>
-//         <GoogleMap
-//             //onClick={  }
-//             center={ center }
-//             zoom={ 1 }
-//         >
-//         {
-//             // props.markers.map((marker, index) => {
-//             //     return <Marker 
-//             //     key={ index }
-//             //     postion={ marker }
-//             //     title={`[${ marker.lat.toFixed(2)}-ish, ${ marker.lng.toFixed(2)}-ish]`}
-//             //     />
-//             // })
-//         }
-//         </GoogleMap>
-//     </div>
-// );
-
 const containerStyle = {
-  width: '800px',
-  height: '400px'
+  width: '400px',
+  height: '200px'
 };
 
 function getRandomInRange(from, to, fixed) {
@@ -47,17 +27,15 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
   })
 
-  //const [map, setMap] = React.useState(null)
-
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
         center={markerPosition}
         zoom={5}
-        //onClick={ console.log('clicked')}
+        onClick={() => console.log('test')
+        }
       >
         <Marker 
-            //onLoad={ onLoad }
             position={ markerPosition }
         />
         { /* Child components, such as markers, info windows, etc. */ }
@@ -67,50 +45,124 @@ function MyComponent() {
 }
 
 // class Map extends Component {
-//     constructor(props) {
-//         super(props)
-
-//         this._handeMapClick = this._handeMapClick.bind(this);
-//         this._handleMapMounted = this._handleMapMounted.bind(this);
-//     }
-
-//     _handleMapMounted(map) {
-//         this._map = map;
-//     }
-
-//     _handeMapClick(event) {
-//         const latLng = event.latLng.toJSON();
-//         const nextState = this.props.state;
-
-//         nextState.markers = [];
-//         nextState.markers.push(latLng);
-//         console.log(nextState);
-
-//         this.props.pinMarkerOnClick(nextState);
-//     }
-
-
-//     render() {
-//         const { center, markers, zoom } = this.props.state;
-
+//   render() {
 //     return (
-//         <MapElem
-//             containerElement={
-//                 <div style={{ height: `300px`, width: `100%` }} />
-//             }
-//             mapElement={
-//                 <div style={{ height: `100%` }} />
-//             }
-//             onMapMounted={ this._handleMapMounted }
-//             onMapClick={ this._handeMapClick }
-//             center={ center }
-//             markers={ markers }
-//             zoom={ zoom }
-//             />
-//         );
-//     }
+//       <LoadScript
+//         googleMapsApiKey="AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
+//       >
+//         <GoogleMap
+//           mapContainerStyle={containerStyle}
+//           center={markerPosition}
+//           zoom={5}
+//         >
+//         <Marker 
+//           position={ markerPosition }
+//         >
+//           <></>
+//           </Marker>
+//         </GoogleMap>
+//       </LoadScript>
+//     )
+//   }
 // }
 
-// export default Map;
+// class Map extends Component {
+//   render() {
+//       return <div style={{
+//               width: '100%',
+//               height: '100%',
+//               backgroundColor: '#fff'
+//             }}>
+//               <GoogleMap
+//                 mapContainerStyle={containerStyle}
+//                 center={center}
+//               //zoom={5}
+//               //onLoad={onLoad}
+//               // onUnmount={onUnmount}
+//             >
+              
+//             </GoogleMap>
+//         </div>
+//   }
+// }
+
+//export default Map;
 
 export default React.memo(MyComponent)
+
+// import React, { Component } from 'react';
+// import { GoogleMap, useGoogleMap, Marker } from "@react-google-maps/api";
+
+// const MapElem = useGoogleMap(props => (
+//   <div>
+//     <GoogleMap
+//       onClick={props.onMapClick}
+//       ref={props.onMapMounted}
+//       center={props.center}
+//       zoom={props.zoom}
+//       defaultOptions={{
+//         streetViewControl: false,
+//         maxZoom: 10,
+//         gestureHandling: 'none'
+//       }}
+//     >
+//       {
+//         props.markers.map((marker, idx) => {
+//           return <Marker
+//             key={idx}
+//             position={marker}
+//             // icon="https://campus-map.stanford.edu/images/new/cm-target.png"
+//             title={`[${marker.lat.toFixed(2)}-ish, ${marker.lng.toFixed(2)}-ish]`}
+//           />
+//         })
+//       }
+//     </GoogleMap>
+//   </div>
+// ));
+
+// class Map extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.handleMapClick = this.handleMapClick.bind(this);
+//     this.handleMapMounted = this.handleMapMounted.bind(this);
+//   }
+
+//   handleMapMounted(map) {
+//     // ??????
+//     this._map = map;
+//   }
+
+//   handleMapClick(event) {
+//     const latLng = event.latLng.toJSON();
+//     const nextState = this.props.state;
+
+//     nextState.markers = [];
+//     nextState.markers.push(latLng)
+//     console.log(nextState);
+
+//     this.props.pinMarkerOnClick(nextState);
+//   }
+
+//   render() {
+//     const { center, markers, zoom } = this.props.state;
+
+//     return (
+//       <MapElem
+//         containerElement={
+//           <div style={{ height: `300px`, width: `100%` }} />
+//         }
+//         mapElement={
+//           <div style={{ height: `100%` }} />
+//         }
+//         onMapMounted={this.handleMapMounted}
+//         onMapClick={this.handleMapClick}
+//         center={center}
+//         markers={markers}
+//         zoom={zoom}
+//       />
+//     );
+//   }
+// }
+
+//export default Map;
