@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { GoogleMap, useJsApiLoader, Marker, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-import { coordinates } from './Streetview'
-import { toHaveFormValues } from '@testing-library/jest-dom/dist/matchers';
-
-const center = {
+export const center = {
   lat: 0,
   lng: -180
 };
@@ -12,16 +9,6 @@ const center = {
 const containerStyle = {
   width: '400px',
   height: '200px'
-};
-
-function getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-    // .toFixed() returns string, so ' * 1' is a trick to convert to number
-}
-
-const markerPosition = {
-  lat: getRandomInRange(-28, -36, 1),
-  lng: getRandomInRange(140, 150, 1)
 };
 
 function MyComponent() {
@@ -39,7 +26,8 @@ function MyComponent() {
   }
 
   return isLoaded ? (
-      <GoogleMap className="window-map"
+    <div className="guessLocation">
+      <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={1}
@@ -53,6 +41,7 @@ function MyComponent() {
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
+      </div>
   ) : <></>
 }
 

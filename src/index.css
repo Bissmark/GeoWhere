@@ -20,6 +20,14 @@ body {
   background-color: #eeeeee;
 }
 
+.guessLocation {
+  position: absolute;
+  left: 600px;
+  top: 400px;
+  z-index: 5;
+  opacity: 0.9;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

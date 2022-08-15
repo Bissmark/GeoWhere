@@ -1,27 +1,59 @@
 import React, { Component } from 'react'
-import { GoogleMap, useJsApiLoader, Marker, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/api';
 
-import { coordinates } from './Streetview'
+import { coordinates } from './Streetview';
+import { center } from './GuessMap';
 
-const center = {
-  lat: 0,
-  lng: -180
-};
+// const center = {
+//   lat: 0,
+//   lng: -180
+// };
 
 const containerStyle = {
   width: '400px',
   height: '200px'
 };
 
-function getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-    // .toFixed() returns string, so ' * 1' is a trick to convert to number
+const PolyLineBetweenGuessAndCorrect = [
+  { lat: center.lat, lng: center.lng},
+  { lat: coordinates.lat, lng: coordinates.lng}
+]
+
+function getDistance(latGuess, lngGuess, latCorrect, lngCorrect, unit) {
+  if((latGuess == latCorrect) && (lngGuess == lngCorrect)) {
+    return 0;
+  } else {
+    let radLatGuess = Math.PI * latGuess / 180;
+    let radLatCorrect = Math.PI * latCorrect / 180;
+    let theta = lngGuess - lngCorrect;
+    let radTheta = Math.PI * theta / 180;
+    let dist = Math.sin(radLatGuess) * Math.sin(radLatCorrect) + Math.cos(radLatGuess) * Math.cos(radLatCorrect) * Math.cos(radTheta);
+
+    if(dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist);
+    dist = dist * 180 / Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit == "K") { dist = dist * 1.609344 }
+    if (unit == "N") { dist = dist * 0.8684 }
+    return (dist / 1.609).toFixed(1);
+  }
 }
 
-const markerPosition = {
-  lat: getRandomInRange(-28, -36, 1),
-  lng: getRandomInRange(140, 150, 1)
-};
+async function calculateScore() {
+  let distance = getDistance(center.lat, center.lng, coordinates.lat, coordinates.lng, 'K');
+
+  if((distance === 0) || (distance <= 1)) {
+    console.log('Congrats you got a perfect score, 5000 points!');
+  } else if ((distance > 1) && (distance <= 5000)) {
+    console.log(`You were so close, ${ (1 / distance) * 50000 } points`);
+  } else if ((distance > 5001)) {
+    console.log('Better luck next time, 0 points');
+  } else {
+    console.log('distance is NaN!');
+  }
+}
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -37,6 +69,10 @@ function MyComponent() {
     fullscreenControl: false
   }
 
+  calculateScore();
+
+  //console.log(getDistance(center.lat, center.lng, coordinates.lat, coordinates.lng, 'K'));
+
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
@@ -47,7 +83,13 @@ function MyComponent() {
         clickableIcons={false}
       >
         <Marker 
-            position={ coordinates }
+          position={ coordinates }
+        />
+        <Marker
+          position={ center }
+        />
+        <Polyline
+          path={ PolyLineBetweenGuessAndCorrect }
         />
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
