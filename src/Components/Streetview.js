@@ -6,19 +6,24 @@ const containerStyle = {
   height: '600px'
 };
 
+const center = {
+  lat: 0,
+  lng: -180
+};
+
 const places = [
   [{ lat: 36.385822,  lng: 127.496827 },  {country: 'South Korea'}], // works
   //[{ lat: 15.075355459598848,  lng: 33.36925104232831 },   {country: 'Sudan'}], // doesnt work
   //[{ lat: -22.598826,  lng: -43.238300 },  {country: 'Brazil'}], // doesnt work
-  //[{ lat: 51.130823,    lng: 71.419196 }, {country: 'Kazahstan'}], // works
+  [{ lat: 51.130823,    lng: 71.419196 }, {country: 'Kazahstan'}], // works
   //[{ lat: 23.731066,  lng: 89.760435 },  {country: 'Bangladesh'}], // doesnt work
   //[{ lat: -32.202210,   lng: 116.302426 },  {country: 'Australia'}], // doesnt work
   //[{ lat: 17.1456591,  lng: -62.5502343 },  {country: 'Caribbean'}], // doesnt work
   //[{ lat: 39.050742,  lng: -111.584244 }, {country: 'USA'}], // doesnt works
-  //[{ lat: 46.838152,  lng: -71.194416 }, {country: 'Canada'}], // works
-  //[{ lat: 64.164175,  lng: -22.021422 }, {country: 'Iceland'}], // works
-  //[{ lat: 38.755671,  lng: -9.225757 }, {country: 'Portugal'}], // works
-  //[{ lat: 12.271734,  lng: 109.206220 }, {country: 'Vietnam'}], // works
+  [{ lat: 46.838152,  lng: -71.194416 }, {country: 'Canada'}], // works
+  [{ lat: 64.164175,  lng: -22.021422 }, {country: 'Iceland'}], // works
+  [{ lat: 38.755671,  lng: -9.225757 }, {country: 'Portugal'}], // works
+  [{ lat: 12.271734,  lng: 109.206220 }, {country: 'Vietnam'}], // works
 
 ];
 
@@ -36,7 +41,7 @@ const places = [
 // 38.75567191119491, -9.225757596536551 Amadora, Lisbon, Portugal
 
 let currentPlace = places[Math.floor(Math.random() * (places.length))];
-let coordinates = currentPlace[0]; // Get coordinates
+export let coordinates = currentPlace[0]; // Get coordinates
 let country = currentPlace[1].country;
 
 function MyComponent() {
@@ -83,5 +88,7 @@ function MyComponent() {
 }
 
 export default React.memo(MyComponent)
+
+//export default coordinates
 
 //export default Streetview;

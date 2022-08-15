@@ -1,57 +1,58 @@
 import Streetview from "./Streetview";
 import Map from "./Map";
-import { useState, useEffect } from 'react';
-import supabase from "../supabaseClient";
+import GuessMap from "./GuessMap";
+//import { useState, useEffect } from 'react';
+//import supabase from "../supabaseClient";
 
 
 function App() {
-  const [scores, setScores] = useState([]);
+  // const [scores, setScores] = useState([]);
 
-  const [email, setEmail] = useState('');
-  const [session, setSession] = useState(null);  
+  // const [email, setEmail] = useState('');
+  // const [session, setSession] = useState(null);  
   
-  useEffect(() => {
-    fetchScore()
-  }, []);
+  // useEffect(() => {
+  //   fetchScore()
+  // }, []);
 
-  useEffect(() => {
-    setSession(supabase.auth.session())
+  // useEffect(() => {
+  //   setSession(supabase.auth.session())
 
-      supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+  //     supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   })
+  // }, [])
 
-  const handleLogin = async () => {
-      const { error } = await supabase.auth.signIn({ email });
-      console.log(error);
-  }
+  // const handleLogin = async () => {
+  //     const { error } = await supabase.auth.signIn({ email });
+  //     console.log(error);
+  // }
 
-  function handleScore(e) {
-    setScores(e.target.onClick);
-  }
+  // function handleScore(e) {
+  //   setScores(e.target.onClick);
+  // }
 
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
+  // function handleEmail(e) {
+  //   setEmail(e.target.value);
+  // }
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  }
+  // const handleLogout = async () => {
+  //   await supabase.auth.signOut();
+  // }
 
 
-  async function fetchScore() {
-    let { data } = await supabase
-    .from('scores')
-    .select('*')
-    setScores(data)
-    //console.log("Scores: ", data);
-  }
-  console.log(session);
+  // async function fetchScore() {
+  //   let { data } = await supabase
+  //   .from('scores')
+  //   .select('*')
+  //   setScores(data)
+  //   //console.log("Scores: ", data);
+  // }
+  // console.log(session);
 
   return (
     <div className="App">
-      <div>
+      {/* <div>
         {session? (
             <>
             <button onClick={handleLogout}>Logout</button>
@@ -62,9 +63,10 @@ function App() {
           <button onClick={handleLogin}>Login</button>    
           </>
         )}
-      </div>
+      </div> */}
       <Streetview />
       <Map />
+      <GuessMap />
     </div>
   );
 }
