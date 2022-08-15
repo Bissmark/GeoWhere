@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, LoadScript } from '@react-google-maps/api';
 
+import { coordinates } from './Streetview'
+
 const center = {
   lat: 0,
   lng: -180
@@ -27,16 +29,25 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
   })
 
+  const mapOptions = {
+    styleControl: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    zoomControl: false,
+    fullscreenControl: false
+  }
+
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
-        center={markerPosition}
-        zoom={5}
-        onClick={() => console.log('test')
-        }
+        center={coordinates}
+        zoom={3}
+        onClick={() => console.log('test')}
+        options={ mapOptions }
+        clickableIcons={false}
       >
         <Marker 
-            position={ markerPosition }
+            position={ coordinates }
         />
         { /* Child components, such as markers, info windows, etc. */ }
         <></>

@@ -1,5 +1,6 @@
 import Streetview from "./Streetview";
 import Map from "./Map";
+import GuessMap from "./GuessMap";
 import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
 
@@ -65,6 +66,7 @@ function App() {
       </div>
       <Streetview />
       <Map />
+      <GuessMap />
     </div>
   );
 }
