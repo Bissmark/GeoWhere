@@ -43,7 +43,7 @@ const places = [
 
 let currentPlace = places[Math.floor(Math.random() * (places.length))];
 export let coordinates = currentPlace[0]; // Get coordinates
-let country = currentPlace[1].country;
+//let country = currentPlace[1].country;
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -60,6 +60,7 @@ function MyComponent() {
     linksControl: false,
     showRoadLabels: false,
     fullscreenControl: false,
+    enableCloseButton: false,
     visible: true
   }
 
