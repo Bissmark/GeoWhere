@@ -8,7 +8,7 @@ export const center = {
 
 const containerStyle = {
   width: '400px',
-  height: '200px'
+  height: '200px',
 };
 
 function MyComponent() {
