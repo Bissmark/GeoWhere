@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
+import Round from './Round';
 
 const containerStyle = {
   width: '1000px',
@@ -83,7 +84,7 @@ function MyComponent() {
         options={panoOptions}
         //onLoad={ onLoad }
     />
-        { /* Child components, such as markers, info windows, etc. */ }
+        {  }
         <></>
       </GoogleMap>
   ) : <></>
