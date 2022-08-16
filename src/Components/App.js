@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="PlayTrip" element={<PlayTrip />} />
-          <Route path="currectMap" element={<Map />} />
+          <Route path="correctMap" element={<Map />} />
 
         </Route>
       </Routes>
