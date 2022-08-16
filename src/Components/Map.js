@@ -19,30 +19,81 @@ const PolyLineBetweenGuessAndCorrect = [
   { lat: coordinates.lat, lng: coordinates.lng}
 ]
 
-function getDistance(latGuess, lngGuess, latCorrect, lngCorrect, unit) {
-  if((latGuess == latCorrect) && (lngGuess == lngCorrect)) {
-    return 0;
-  } else {
-    let radLatGuess = Math.PI * latGuess / 180;
-    let radLatCorrect = Math.PI * latCorrect / 180;
-    let theta = lngGuess - lngCorrect;
-    let radTheta = Math.PI * theta / 180;
-    let dist = Math.sin(radLatGuess) * Math.sin(radLatCorrect) + Math.cos(radLatGuess) * Math.cos(radLatCorrect) * Math.cos(radTheta);
+// const midPointPolyLine = [
+//   { lat: (center.lat + coordinates.lat) / 2, lng: (center.lng + coordinates.lng) / 2}
+// ]
 
-    if(dist > 1) {
-      dist = 1;
-    }
-    dist = Math.acos(dist);
-    dist = dist * 180 / Math.PI;
-    dist = dist * 60 * 1.1515;
-    if (unit == "K") { dist = dist * 1.609344 }
-    if (unit == "N") { dist = dist * 0.8684 }
-    return (dist / 1.609).toFixed(1);
-  }
+// const midpoint = (p1, p2) => [(p1.x + p2.x) / 2, (p1.y + p2.y) / 2];
+
+function midpoint(x1, y1, x2, y2) {
+	return [(x1 + x2) / 2, (y1 + y2) / 2];
 }
 
+// console.log(center);
+// console.log(coordinates);
+
+// // midpointPoly.reduce();
+// // console.log(midpointPoly);
+
+// const zoomCentre = {
+//   lat: (center.lat / 2) + (coordinates.lat / 2), lng: (center.lng / 2) + (coordinates.lng / 2)
+// };
+
+// console.log(zoomCentre);
+
+// function getDistance(latGuess, lngGuess, latCorrect, lngCorrect, unit) {
+//   if((latGuess == latCorrect) && (lngGuess == lngCorrect)) {
+//     return 0;
+//   } else {
+//     let radLatGuess = Math.PI * latGuess / 180;
+//     let radLatCorrect = Math.PI * latCorrect / 180;
+//     let theta = lngGuess - lngCorrect;
+//     let radTheta = Math.PI * theta / 180;
+//     let dist = Math.sin(radLatGuess) * Math.sin(radLatCorrect) + Math.cos(radLatGuess) * Math.cos(radLatCorrect) * Math.cos(radTheta);
+
+//     if(dist > 1) {
+//       dist = 1;
+//     }
+//     dist = Math.acos(dist);
+//     dist = dist * 180 / Math.PI;
+//     dist = dist * 60 * 1.1515;
+//     if (unit == "K") { dist = dist * 1.609344 }
+//     if (unit == "N") { dist = dist * 0.8684 }
+//     return (dist / 1.609).toFixed(1);
+//   }
+// }
+
+function calcCrow(lat1, lon1, lat2, lon2) {
+  const R = 6371; // km
+  const dLat = toRad(lat2-lat1);
+  const dLon = toRad(lon2-lon1);
+  lat1 = toRad(lat1);
+  lat2 = toRad(lat2);
+
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const d = R * c;
+  return d;
+}
+
+function toRad(value) {
+  return value * Math.PI / 180;
+}
+
+function calculateBonus(km) {
+  const temp = Math.pow(((km + 100) / km) * 0.2, 6) * 4000;
+  return  temp > 1 ? 10000 : temp * 10000;
+}
+
+console.log(center);
+console.log(coordinates);
+
 async function calculateScore() {
-  let distance = getDistance(center.lat, center.lng, coordinates.lat, coordinates.lng, 'K');
+  let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
+
+  let score = calculateBonus(distance);
+  console.log(score);
 
   if((distance === 0) || (distance <= 1)) {
     console.log('Congrats you got a perfect score, 5000 points!');
@@ -102,6 +153,9 @@ function MyComponent() {
         <Marker
           position={ center }
         />
+        {/* <Marker
+          position={ zoomCentre }
+        />   */}
         <Polyline
           path={ PolyLineBetweenGuessAndCorrect }
           options={PolylineOptions}
