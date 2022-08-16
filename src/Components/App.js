@@ -1,77 +1,25 @@
-import Streetview from "./Streetview";
+import React from 'react';
+import Layout from "./Layout";
+import PlayTrip from './PlayTrip';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
 import Map from "./Map";
-import GuessMap from "./GuessMap";
-// import { useState, useEffect } from 'react';
-// import supabase from "../supabaseClient";
 
 
-function App() {
-  // const [scores, setScores] = useState([]);
-
-  // const [email, setEmail] = useState('');
-  // const [session, setSession] = useState(null);  
-  
-  // useEffect(() => {
-  //   fetchScore()
-  // }, []);
-
-  // useEffect(() => {
-  //   setSession(supabase.auth.session())
-
-  //     supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session)
-  //   })
-  // }, [])
-
-  // const handleLogin = async () => {
-  //     const { error } = await supabase.auth.signIn({ email });
-  //     console.log(error);
-  // }
-
-  // function handleScore(e) {
-  //   setScores(e.target.onClick);
-  // }
-
-  // function handleEmail(e) {
-  //   setEmail(e.target.value);
-  // }
-
-  // const handleLogout = async () => {
-  //   await supabase.auth.signOut();
-  // }
 
 
-  // async function fetchScore() {
-  //   let { data } = await supabase
-  //   .from('scores')
-  //   .select('*')
-  //   setScores(data)
-  //   //console.log("Scores: ", data);
-  // }
-  // console.log(session);
 
+export default function App() {
   return (
-    <div className="App">
-      {/* <div>
-        {session? (
-            <>
-            <button onClick={handleLogout}>Logout</button>
-            </>
-        ) : (
-          <>
-          <input type="email" value={ email } onChange={ handleEmail }></input>
-          <button onClick={handleLogin}>Login</button>    
-          </>
-        )}
-      </div> */}
-      <Streetview />
-      <Map />
-      <GuessMap />
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="PlayTrip" element={<PlayTrip />} />
+          <Route path="currectMap" element={<Map />} />
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-
-
-export default App;
