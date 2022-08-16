@@ -8,6 +8,7 @@ function PlayTrip () {
     <>
       <Streetview />
       <GuessMap />
+      <button className="guessButton">Guess</button>
     </>
   );
 };

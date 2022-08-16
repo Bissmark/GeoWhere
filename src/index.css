@@ -12,6 +12,13 @@ body {
   display: flex;
 }
 
+.guessButton {
+  position: absolute;
+  left: 750px;
+  top: 650px;
+  z-index: 5;
+}
+
 .guessLocation {
   position: absolute;
   left: 600px;
