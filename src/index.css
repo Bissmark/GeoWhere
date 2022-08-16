@@ -15,11 +15,11 @@ body {
 .guessButton {
   background-color: grey;
   position: absolute;
-  left: 550px;
-  top: 450px;
+  left: 280px;
+  top: 460px;
   z-index: 5;
   margin: 225px 0px 0px 340px;
-  width: 100px;
+  width: 350px;
   height: 40px;
   border-radius: 5px;
 }
@@ -41,6 +41,10 @@ body {
   margin: 42px 0px;
   margin-left: -60px;
   opacity: 1;
+}
+
+.login {
+  margin: 5em;
 }
 
 code {

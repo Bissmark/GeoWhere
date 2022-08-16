@@ -26,7 +26,7 @@ function MyComponent() {
   }
 
   return isLoaded ? (
-    <div className="guessLocation ">
+    <div className="guessLocation">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
