@@ -8,24 +8,17 @@ body {
   display: flex;
 }
 
-.window-streetview {
-  width: 600px;
-  height: 450px;
-  background-color: #eeeeee;
-}
-
-.window-map {
-  width: 600px;
-  height: 450px;
-  background-color: #eeeeee;
-}
-
 .guessLocation {
   position: absolute;
   left: 600px;
   top: 400px;
   z-index: 5;
-  opacity: 0.9;
+  opacity: 0.3;
+}
+
+.guessLocation:hover {
+  transform: scale(1.5);
+  opacity: 1;
 }
 
 code {
