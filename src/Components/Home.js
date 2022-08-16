@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
 
-function App() {
+function Home() {
      const [email, setEmail] = useState('');
      const [session, setSession] = useState(null);  
     
@@ -32,7 +32,7 @@ function App() {
   
     return (
   
-      <div className="App">
+      <div className="login">
         <div>
           {session? (
               <>
@@ -51,4 +51,4 @@ function App() {
   
   
   
-  export default App;
+  export default Home;
