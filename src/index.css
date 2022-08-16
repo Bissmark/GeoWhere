@@ -13,10 +13,18 @@ body {
 }
 
 .guessButton {
+  background-color: grey;
   position: absolute;
   left: 550px;
   top: 450px;
   z-index: 5;
+  margin: 225px 0px 0px 340px;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+}
+.guessButton:hover {
+  transform: scale(1.2);
 }
 
 .guessLocation {
