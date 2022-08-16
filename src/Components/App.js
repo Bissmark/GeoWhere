@@ -64,6 +64,7 @@ function App() {
           </>
         )}
       </div>
+      <h1 className="text-3xl font-bold underline">Where Am I?</h1>
       <Streetview />
       <Map />
       <GuessMap />
