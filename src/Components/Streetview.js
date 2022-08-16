@@ -64,7 +64,7 @@ function MyComponent() {
     visible: true
   }
 
-  console.log(coordinates);
+  //console.log(coordinates);
 
   return isLoaded ? (
       <GoogleMap
