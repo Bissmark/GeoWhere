@@ -14,10 +14,10 @@ function PlayTrip () {
       <Streetview />
       <GuessMap />
       
-        <Round />
-        <Timer />
-        <Scores />
-        <button className="guessButton" onClick={_handleOnClick}>Guess</button>
+        {/* <Round /> */}
+        {/* <Timer /> */}
+        {/* <Scores /> */}
+        <button className="guessButton">Guess</button>
       
     </div>
     </>

@@ -3,7 +3,12 @@ import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/
 import GuessMap from './GuessMap';
 
 import { coordinates } from './Streetview';
-import { center } from './GuessMap';
+//import { center } from './GuessMap';
+
+const center = {
+  lat: 0,
+  lng: -180
+};
 
 const containerStyle = {
   width: '900px',

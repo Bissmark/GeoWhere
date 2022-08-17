@@ -16,6 +16,7 @@ body {
 }
 
 .score {
+  position: relative;
   z-index: 10;
 }
 
@@ -37,8 +38,8 @@ body {
 
 .guessLocation {
   position: relative;
-  left: 420px;
-  bottom: 150px;
+  left: 400px;
+  bottom: 280px;
   z-index: 5;
   opacity: 0.7;
   transform: scale(0.4);
@@ -48,8 +49,8 @@ body {
 .guessLocation:hover {
   transform: scale(1.2);
   position: relative;
-  left: 260px;
-  bottom: 220px;
+  left: 250px;
+  bottom: 350px;
   opacity: 1;
 }
 
@@ -64,15 +65,17 @@ nav {
 
 .timer {
   position: relative;
-  bottom: 240px;
+  bottom: 600px;
   font-size: 30px;
+  z-index: 2;
 }
 
 .round {
   position: relative;
+  bottom: 315px;
+  left: 430px;
   font-size: 30px;
-  bottom: 850px;
-  right: -16px
+  z-index: 2;
 }
 
 code {

@@ -7,7 +7,7 @@ function CorrectMap () {
     <>
       <Map />
       <div>
-        <Scores />
+        {/* <Scores /> */}
       </div>
     </>
   );

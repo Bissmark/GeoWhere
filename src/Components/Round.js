@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { round } from "./Map";
 
-
-
 class Round extends Component {
-    
 
     render() {
         console.log(round);

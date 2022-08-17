@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import Timer from './Timer';
+import Score from './scores';
 
-export const center = {
+const center = {
   lat: 0,
   lng: -180
 };
@@ -41,8 +42,8 @@ const containerStyle = {
         clickableIcons: false
     }
 
-        return isLoaded ? (
-            <div className="guessLocation">
+    return isLoaded ? (
+        <div className="guessLocation">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -57,9 +58,6 @@ const containerStyle = {
                 { /* Child components, such as markers, info windows, etc. */ }
                 <></>
             </GoogleMap>
-            </div>
-        ) : <></>
-    }
-    GuessMap.propTypes = {
-        locationSelected: PropTypes.func
+        </div>
+    ) : <></>
 }
