@@ -29,7 +29,7 @@ function Score() {
     return (
   
       <div className="App">
-        <p>Score: { score }</p>
+        <div className='score'>Score: { score }</div>
       </div>
     );
   }
