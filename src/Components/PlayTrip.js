@@ -14,10 +14,7 @@ function PlayTrip () {
       <Streetview />
       <GuessMap />
       
-        {/* <Round /> */}
-        {/* <Timer /> */}
-        {/* <Scores /> */}
-        <button className="guessButton">Guess</button>
+      <button className="guessButton">Guess</button>
       
     </div>
     </>

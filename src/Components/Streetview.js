@@ -88,9 +88,6 @@ function MyComponent() {
         <div className="round">
           <Round />
         </div>
-        <div class="guessButton">
-          <button></button>
-        </div>
    </div>
   ) : <></>
 }
