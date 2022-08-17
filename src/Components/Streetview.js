@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
-import Round from './Round';
 
 const containerStyle = {
   width: '1000px',
   height: '600px'
-};
-
-const center = {
-  lat: 0,
-  lng: -180
 };
 
 const places = [
@@ -65,8 +59,6 @@ function MyComponent() {
     visible: true
   }
 
-  //console.log(coordinates);
-
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -90,8 +82,4 @@ function MyComponent() {
   ) : <></>
 }
 
-export default React.memo(MyComponent)
-
-//export default coordinates
-
-//export default Streetview;
+export default React.memo(MyComponent);
