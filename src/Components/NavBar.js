@@ -22,7 +22,7 @@ function Navbar() {
           <Link className="text-3xl text-blue-500 hover:text-blue-800" to="/playWithFriends">Play With Friends</Link>
         </li>
         <li className="mr-6">
-          <Link className="text-3xl text-blue-500 hover:text-blue-800" to="/Quiz">Quiz</Link>
+          <Link className="text-3xl text-blue-500 hover:text-blue-800" to="/CorrectMap">Quiz</Link>
         </li>
       </ul>
       </nav>

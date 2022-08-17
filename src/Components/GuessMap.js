@@ -3,6 +3,8 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import Timer from './Timer';
 import Score from './scores';
 
+
+
 const center = {
   lat: 0,
   lng: -180
@@ -15,7 +17,7 @@ const containerStyle = {
 
 //export let selectedLocation, setSelectedLocation;// = useState();
 
- export default function GuessMap({ locationSelected }) {
+ export default function GuessMap({ updateMarkers }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -24,14 +26,16 @@ const containerStyle = {
         googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
     })
 
-    const _handleMapClick = (e) => {
+    const _handleMapClick = (ev, lat, lng) => {
+        // console.log(456,e)
         setSelected(true);
-        setSelectedLocation(e.latLng);
+        setSelectedLocation(ev.latLng);
+        updateMarkers(lat, lng)
     }
 
-    const _handleLocationSelected = () => {
-        locationSelected(selectedLocation);
-    }
+    // const _handleLocationSelected = () => {
+    //     locationSelected(selectedLocation);
+    // }
 
     const mapOptions = {
         styleControl: false,
@@ -48,16 +52,16 @@ const containerStyle = {
                 mapContainerStyle={containerStyle}
                 center={center}
                 zoom={1}
-                onClick={_handleMapClick}
+                onClick={(ev) => _handleMapClick(ev, ev.latLng.lat(), ev.latLng.lng())}
                 options={ mapOptions }
             >
             <Marker 
                 position={ selectedLocation }
                 clickable={false}
             />
-                { /* Child components, such as markers, info windows, etc. */ }
                 <></>
             </GoogleMap>
+            <button className="guessButton">Guess</button>
         </div>
     ) : <></>
 }
