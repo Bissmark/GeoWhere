@@ -83,28 +83,30 @@ function toRad(value) {
 
 function calculateBonus(km) {
   const temp = Math.pow(((km + 100) / km) * 0.2, 6) * 4000;
-  return  temp > 1 ? 10000 : temp * 10000;
+  return  Math.round(temp > 1 ? 10000 : temp * 10000);
 }
 
 console.log(center);
 console.log(coordinates);
 
-async function calculateScore() {
-  let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
+// async function calculateScore() {
+//   let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
 
-  let score = calculateBonus(distance);
-  console.log(score);
+//   let score = calculateBonus(distance);
+//   console.log(score);
 
-  if((distance === 0) || (distance <= 1)) {
-    console.log('Congrats you got a perfect score, 5000 points!');
-  } else if ((distance > 1) && (distance <= 5000)) {
-    console.log(`You were so close, ${ (1 / distance) * 50000 } points`);
-  } else if ((distance > 5001)) {
-    console.log('Better luck next time, 0 points');
-  } else {
-    console.log('distance is NaN!');
-  }
-}
+//   if((distance === 0) || (distance <= 1)) {
+//     console.log('Congrats you got a perfect score, 5000 points!');
+//   } else if ((distance > 1) && (distance <= 5000)) {
+//     console.log(`You were so close, ${ (1 / distance) * 50000 } points`);
+//   } else if ((distance > 5001)) {
+//     console.log('Better luck next time, 0 points');
+//   } else {
+//     console.log('distance is NaN!');
+//   }
+// }
+let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
+export let score = calculateBonus(distance);
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -134,7 +136,7 @@ function MyComponent() {
     zIndex: 1
   };
 
-  calculateScore();
+  //calculateScore();
 
   //console.log(getDistance(center.lat, center.lng, coordinates.lat, coordinates.lng, 'K'));
 
