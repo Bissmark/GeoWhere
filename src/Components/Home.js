@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
 
 function Home() {
-     const [email, setEmail] = useState('');
-     const [session, setSession] = useState(null);  
+    const [email, setEmail] = useState('');
+    const [session, setSession] = useState(null);  
     
   
     useEffect(() => {
@@ -33,8 +33,9 @@ function Home() {
     return (
 
       <div className="login">
-        <h1>Welcome to GeoWhere?</h1>
-        <div className="w-full max-w-xs">
+        <h1 className='text-yellow-500 text-2xl'>Welcome to GeoWhere?</h1>
+        <p className='text-yellow-500'>Maybe sign up for an account to play? =)</p>
+        {/* <div className="w-full max-w-xs">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             {session? (
@@ -54,7 +55,7 @@ function Home() {
           </div>  
         </form>
         <p className="text-center text-gray-500 text-xs">When you submit, you'll receive an email confirmation so no need for a password.</p>
-        </div>
+        </div> */}
       </div>
     );
   }
