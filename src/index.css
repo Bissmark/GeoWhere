@@ -4,6 +4,7 @@
 
 * {
   margin: 0 auto;
+  width: 100%;
 }
 
 body {
@@ -16,20 +17,25 @@ body {
 }
 
 .score {
-  z-index: 10;
+  font-weight: 500;
+  font-size: 20px;
+  position: relative;
+  left: 400px;
 }
 
-.guessButton {
+.newRound {
   background-color: lightblue;
   position: relative;
-  left: 830px;
-  bottom: 300px;
+  left: 380px;
+  top: 10px;
   z-index: 5;
   width: 150px;
   height: 40px;
   border-radius: 20px;
+  transition: transform 0.25s;
 }
-.guessButton:hover {
+
+.newRound:hover {
   transform: scale(1.2);
   background-color: rgb(0, 140, 255);
   color: white;
@@ -43,6 +49,7 @@ body {
   opacity: 0.7;
   transform: scale(0.4);
   width: 100%;
+  transition: transform 0.05s;
 }
 
 .guessLocation:hover {
@@ -58,21 +65,43 @@ body {
 }
 
 nav {
+  background-color: antiquewhite;
   width: 100%;
   padding: 1em;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .timer {
   position: relative;
   bottom: 240px;
+  left: 660px;
   font-size: 30px;
 }
 
 .round {
   position: relative;
   font-size: 30px;
-  bottom: 850px;
-  right: -16px
+  bottom: 840px;
+  left: 250px
+}
+
+.guessButton {
+  background-color: lightblue;
+  position: sticky;
+  left: 1490px;
+  bottom: 300px;
+  z-index: 5;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  transition: transform 0.25s;
+  margin: 10px;
+}
+.guessButton:hover {
+  transform: scale(1.2);
+  background-color: rgb(0, 140, 255);
+  color: white;
 }
 
 code {

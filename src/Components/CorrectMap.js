@@ -8,6 +8,7 @@ function CorrectMap () {
       <Map />
       <div>
         <Scores />
+        <button className="newRound">Next Round</button>
       </div>
     </>
   );

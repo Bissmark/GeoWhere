@@ -17,15 +17,13 @@ function PlayTrip () {
 
   return (
     <>
-      <div className="my-9">
+    <div className="my-9">
       <Streetview />
       <GuessMap />
-      
-        <Round />
-        <Timer />
-        <Scores />
-        <button className="guessButton">Guess</button>
-      
+      <Round />
+      <Timer />
+      <Scores />
+      <button className="guessButton">Guess</button>
     </div>
     </>
   );
