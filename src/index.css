@@ -19,7 +19,7 @@ body {
   background-color: lightblue;
   position: relative;
   left: 615px;
-  bottom: 197px;
+  bottom: 280px;
   z-index: 5;
   width: 350px;
   height: 40px;
@@ -55,6 +55,19 @@ body {
 nav {
   width: 100%;
   padding: 1em;
+}
+
+.timer {
+  position: relative;
+  bottom: 240px;
+  font-size: 30px;
+}
+
+.round {
+  position: relative;
+  font-size: 30px;
+  bottom: 850px;
+  right: -10px;
 }
 
 code {

@@ -10,8 +10,8 @@ import { center } from './GuessMap';
 // };
 
 const containerStyle = {
-  width: '400px',
-  height: '200px'
+  width: '900px',
+  height: '600px'
 };
 
 const PolyLineBetweenGuessAndCorrect = [
