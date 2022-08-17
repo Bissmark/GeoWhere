@@ -39,7 +39,7 @@ class Timer extends Component {
             <div className="timer">
                 { minutes === 0 && seconds === 0
                     ? <h1>Time out!</h1>
-                    :   <p>Timer Remaining: { minutes }:{ seconds < 10 ? `0${ seconds }` : seconds }</p>
+                    :   <p>Time Remaining: { minutes }:{ seconds < 10 ? `0${ seconds }` : seconds }</p>
                 }
             </div>
         )
