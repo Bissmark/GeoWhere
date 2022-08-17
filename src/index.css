@@ -4,7 +4,6 @@
 
 * {
   margin: 0 auto;
-  width: 100%;
 }
 
 body {
@@ -17,62 +16,42 @@ body {
 }
 
 .score {
-<<<<<<< HEAD
-  font-weight: 500;
-  font-size: 20px;
-  position: relative;
-  left: 400px;
-=======
   position: relative;
   z-index: 10;
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
 }
 
-.newRound {
+.guessButton {
   background-color: lightblue;
   position: relative;
-<<<<<<< HEAD
-  left: 380px;
-  top: 10px;
-  z-index: 5;
-=======
-  left: 680px;
-  bottom: 330px;
+  left: 130px;
   z-index: 6;
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
   width: 150px;
   height: 40px;
   border-radius: 20px;
-  transition: transform 0.25s;
 }
-
-.newRound:hover {
+.guessButton:hover {
   transform: scale(1.2);
   background-color: rgb(0, 140, 255);
   color: white;
 }
 
 .guessLocation {
+  display: inline-block;
   position: relative;
-  left: 400px;
+  left: 700px;
   bottom: 340px;
   z-index: 5;
   opacity: 0.7;
   transform: scale(0.4);
-  width: 100%;
-  transition: transform 0.05s;
+  /* width: 100%; */
 }
 
 .guessLocation:hover {
-  transform: scale(1);
+  display: inline-block;
+  transform: scale(1.2);
   position: relative;
-<<<<<<< HEAD
-  left: 300px;
-  bottom: 200px;
-=======
-  left: 250px;
+  left: 550px;
   bottom: 350px;
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
   opacity: 1;
 }
 
@@ -81,54 +60,27 @@ body {
 }
 
 nav {
-  background-color: antiquewhite;
   width: 100%;
   padding: 1em;
-  text-align: center;
-  margin-bottom: 50px;
 }
 
 .timer {
+  display: inline-block;
   position: relative;
-<<<<<<< HEAD
-  bottom: 240px;
-  left: 660px;
-=======
-  bottom: 600px;
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
+  bottom: 578px;
+  left: 30px;
   font-size: 30px;
   z-index: 2;
   color: white;
 }
 
 .round {
+  display: inline-block;
   position: relative;
-  bottom: 315px;
-  left: 430px;
+  bottom: 291px;
+  left: 340px;
   font-size: 30px;
-<<<<<<< HEAD
-  bottom: 840px;
-  left: 250px
-}
-
-.guessButton {
-  background-color: lightblue;
-  position: sticky;
-  left: 1490px;
-  bottom: 300px;
-  z-index: 5;
-  width: 150px;
-  height: 40px;
-  border-radius: 20px;
-  transition: transform 0.25s;
-  margin: 10px;
-}
-.guessButton:hover {
-  transform: scale(1.2);
-  background-color: rgb(0, 140, 255);
-=======
   z-index: 2;
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
   color: white;
 }
 

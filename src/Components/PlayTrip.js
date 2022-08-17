@@ -1,31 +1,37 @@
 import React from "react";
 import GuessMap from "./GuessMap";
 import Streetview from "./Streetview";
-import Round from "./Round";
-import Timer from "./Timer";
-import Scores from "./scores"
-import { round } from "./Map";
+import Map from "./Map";
+import { useState } from "react";
 
-function PlayTrip () {
+function PlayTrip() {
+  const [view, setView] = useState(0);
+
+  const [markerLocation, setMarkerLocation] = useState([]);
+  
+  const updateMarkers = (lat, lng) => {
+    setMarkerLocation([lat,lng])
+    console.log('this one is good', markerLocation)
+  }
 
   return (
     <>
-    <div className="my-9">
-      <Streetview />
-      <GuessMap />
-<<<<<<< HEAD
-      <Round />
-      <Timer />
-      <Scores />
-      <button className="guessButton">Guess</button>
-=======
-      
-      <button className="guessButton">Guess</button>
-      
->>>>>>> 926ea420cd9de61469ed0ec5b0f411ee00a5c401
-    </div>
+      <div className="my-9">
+        <button id="switchView" onClick={() => setView(view ? view - 1 : view + 1)}>
+          Switch
+        </button>
+        {!view ? (
+          <div>
+            <Streetview />
+            <GuessMap updateMarkers={updateMarkers}/>
+            <button className="guessButton" onClick={() => setView(view ? view - 1 : view + 1)} >Guess</button>
+          </div>
+        ) : (
+          <Map markerValue={markerLocation}/>
+        )}
+      </div>
     </>
   );
-};
+}
 
 export default PlayTrip;

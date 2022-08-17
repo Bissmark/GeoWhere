@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
 import Timer from './Timer';
 import Round from './Round';
+import GuessMap from './GuessMap';
 
 const containerStyle = {
   width: '1000px',
@@ -57,10 +58,11 @@ function MyComponent() {
       pitch: 2,
     },
     addressControl: false,
-    linksControl: false,
+    //linksControl: false,
     showRoadLabels: false,
     fullscreenControl: false,
     enableCloseButton: false,
+    zoomControl: false,
     visible: true
   }
 
@@ -68,19 +70,11 @@ function MyComponent() {
     <div>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        //center={center}
-        //zoom={10}
-        //onLoad={onLoad}
-        // onUnmount={onUnmount}
-        //onClick={ }
         addressControl={false}
       >
         <StreetViewPanorama
-        //apiKey={apiKey}
-        //zoom={3}
         position={ coordinates }
         options={panoOptions}
-        //onLoad={ onLoad }
     />
         {  }
         <></>
