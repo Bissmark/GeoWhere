@@ -6,14 +6,7 @@ import Timer from "./Timer";
 import Scores from "./scores"
 import { round } from "./Map";
 
-
-// function _handleOnClick() {
-//   round = round + 1;
-// }
-
 function PlayTrip () {
-
-  
 
   return (
     <>
@@ -24,7 +17,7 @@ function PlayTrip () {
         <Round />
         <Timer />
         <Scores />
-        <button className="guessButton">Guess</button>
+        <button className="guessButton" onClick={_handleOnClick}>Guess</button>
       
     </div>
     </>

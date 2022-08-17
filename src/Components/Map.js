@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/api';
+import GuessMap from './GuessMap';
 
 import { coordinates } from './Streetview';
 import { center } from './GuessMap';
@@ -74,9 +75,7 @@ function MyComponent({ locationSelected }) {
     zIndex: 1
   };
 
-  // const _handleLocationSelected = () => {
-  //   locationSelected(selectedLocation);
-  // }
+  console.log(GuessMap.selectedLocation);
 
   return isLoaded ? (
       <GoogleMap className="window-map"

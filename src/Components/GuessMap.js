@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 export const center = {
@@ -11,7 +12,9 @@ const containerStyle = {
   height: '200px',
 };
 
-function MyComponent({ locationSelected }) {
+//export let selectedLocation, setSelectedLocation;// = useState();
+
+ export default function GuessMap({ locationSelected }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -29,13 +32,6 @@ function MyComponent({ locationSelected }) {
         locationSelected(selectedLocation);
     }
 
-    const guessButton = (
-        <button>
-            onClick={_handleLocationSelected}
-            Guess
-        </button>
-    )
-
     const mapOptions = {
         styleControl: false,
         mapTypeControl: false,
@@ -45,24 +41,25 @@ function MyComponent({ locationSelected }) {
         clickableIcons: false
     }
 
-    return isLoaded ? (
-        <div className="guessLocation">
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={1}
-            onClick={_handleMapClick}
-            options={ mapOptions }
-        >
-        <Marker 
-            position={ selectedLocation }
-            clickable={false}
-        />
-            { guessButton/* Child components, such as markers, info windows, etc. */ }
-            <></>
-        </GoogleMap>
-        </div>
-    ) : <></>
+        return isLoaded ? (
+            <div className="guessLocation">
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={1}
+                onClick={_handleMapClick}
+                options={ mapOptions }
+            >
+            <Marker 
+                position={ selectedLocation }
+                clickable={false}
+            />
+                { /* Child components, such as markers, info windows, etc. */ }
+                <></>
+            </GoogleMap>
+            </div>
+        ) : <></>
+    }
+    GuessMap.propTypes = {
+        locationSelected: PropTypes.func
 }
-
-export default React.memo(MyComponent);
