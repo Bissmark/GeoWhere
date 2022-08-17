@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import Timer from './Timer';
+import Score from './scores';
 
-export const center = {
+const center = {
   lat: 0,
   lng: -180
 };
@@ -11,7 +13,9 @@ const containerStyle = {
   height: '200px',
 };
 
-function MyComponent({ locationSelected }) {
+//export let selectedLocation, setSelectedLocation;// = useState();
+
+ export default function GuessMap({ locationSelected }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -29,13 +33,6 @@ function MyComponent({ locationSelected }) {
         locationSelected(selectedLocation);
     }
 
-    const guessButton = (
-        <button>
-            onClick={_handleLocationSelected}
-            Guess
-        </button>
-    )
-
     const mapOptions = {
         styleControl: false,
         mapTypeControl: false,
@@ -47,22 +44,20 @@ function MyComponent({ locationSelected }) {
 
     return isLoaded ? (
         <div className="guessLocation">
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={1}
-            onClick={_handleMapClick}
-            options={ mapOptions }
-        >
-        <Marker 
-            position={ selectedLocation }
-            clickable={false}
-        />
-            { guessButton/* Child components, such as markers, info windows, etc. */ }
-            <></>
-        </GoogleMap>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={1}
+                onClick={_handleMapClick}
+                options={ mapOptions }
+            >
+            <Marker 
+                position={ selectedLocation }
+                clickable={false}
+            />
+                { /* Child components, such as markers, info windows, etc. */ }
+                <></>
+            </GoogleMap>
         </div>
     ) : <></>
 }
-
-export default React.memo(MyComponent);

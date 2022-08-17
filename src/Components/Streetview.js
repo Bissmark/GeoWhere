@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { GoogleMap, useJsApiLoader, StreetViewPanorama } from '@react-google-maps/api';
+import Timer from './Timer';
+import Round from './Round';
 
 const containerStyle = {
   width: '1000px',
@@ -63,6 +65,7 @@ function MyComponent() {
   }
 
   return isLoaded ? (
+    <div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         //center={center}
@@ -82,6 +85,13 @@ function MyComponent() {
         {  }
         <></>
       </GoogleMap>
+        <div className="timer">
+          <Timer />
+        </div>
+        <div className="round">
+          <Round />
+        </div>
+   </div>
   ) : <></>
 }
 
