@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from '@react-google-maps/api';
-import Scores from './scores';
 
 import { coordinates } from './Streetview';
 import { center } from './GuessMap';
@@ -44,7 +43,10 @@ console.log(coordinates);
 let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
 export let score = calculateBonus(distance);
 
-function MyComponent() {
+export let round = 1;
+
+function MyComponent({ locationSelected }) {
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
@@ -72,23 +74,30 @@ function MyComponent() {
     zIndex: 1
   };
 
+  // const _handleLocationSelected = () => {
+  //   locationSelected(selectedLocation);
+  // }
+
   return isLoaded ? (
       <GoogleMap className="window-map"
         mapContainerStyle={containerStyle}
         center={coordinates}
         zoom={3}
-        onClick={() => console.log('test')}
+        //onClick={_handleMapClick}
         options={ mapOptions }
         clickableIcons={false}
       >
         <Marker 
           position={ coordinates }
+          clickable={ false }
         />
         <Marker
           position={ center }
+          clickable={ false }
         />
         {/* <Marker
-          position={ zoomCentre }
+          position={ selectedLocation }
+          clickable={ false }
         />   */}
         <Polyline
           path={ PolyLineBetweenGuessAndCorrect }

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { round } from "./Map";
 
 class Round extends Component {
     render() {
         return (
             <div className="round">
-                <p>Round 1/5</p>
+                <p>Round { round } /5</p>
             </div>
         )
     }

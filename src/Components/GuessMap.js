@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 export const center = {
@@ -11,38 +11,58 @@ const containerStyle = {
   height: '200px',
 };
 
-function MyComponent() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
-  })
+function MyComponent({ locationSelected }) {
+    const [isSelected, setSelected] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState();
 
-  const mapOptions = {
-    styleControl: false,
-    mapTypeControl: false,
-    streetViewControl: false,
-    zoomControl: false,
-    fullscreenControl: false
-  }
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
+    })
 
-  return isLoaded ? (
-    <div className="guessLocation">
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={1}
-        onClick={() => console.log('test')}
-        options={ mapOptions }
-        clickableIcons={false}
-      >
+    const _handleMapClick = (e) => {
+        setSelected(true);
+        setSelectedLocation(e.latLng);
+    }
+
+    const _handleLocationSelected = () => {
+        locationSelected(selectedLocation);
+    }
+
+    const guessButton = (
+        <button>
+            onClick={_handleLocationSelected}
+            Guess
+        </button>
+    )
+
+    const mapOptions = {
+        styleControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        zoomControl: false,
+        fullscreenControl: false,
+        clickableIcons: false
+    }
+
+    return isLoaded ? (
+        <div className="guessLocation">
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={1}
+            onClick={_handleMapClick}
+            options={ mapOptions }
+        >
         <Marker 
-            position={ center }
+            position={ selectedLocation }
+            clickable={false}
         />
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
-      </GoogleMap>
-      </div>
-  ) : <></>
+            { guessButton/* Child components, such as markers, info windows, etc. */ }
+            <></>
+        </GoogleMap>
+        </div>
+    ) : <></>
 }
 
 export default React.memo(MyComponent);
