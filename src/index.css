@@ -45,10 +45,10 @@ body {
 }
 
 .guessLocation:hover {
-  transform: scale(1.2);
+  transform: scale(1);
   position: relative;
-  left: 260px;
-  bottom: 220px;
+  left: 300px;
+  bottom: 200px;
   opacity: 1;
 }
 
