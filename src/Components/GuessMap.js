@@ -17,7 +17,7 @@ const containerStyle = {
 
 //export let selectedLocation, setSelectedLocation;// = useState();
 
- export default function GuessMap({ updateMarkers }) {
+ export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -30,7 +30,11 @@ const containerStyle = {
         // console.log(456,e)
         setSelected(true);
         setSelectedLocation(ev.latLng);
-        updateMarkers(lat, lng)
+        updateMarkers(lat, lng);
+    }
+
+    const _handleGuessClick = () => {
+        guessLocation();
     }
 
     // const _handleLocationSelected = () => {
@@ -61,7 +65,7 @@ const containerStyle = {
             />
                 <></>
             </GoogleMap>
-            <button className="guessButton">Guess</button>
+            <button className="guessButton" onClick={() => _handleGuessClick()}>Guess</button>
         </div>
     ) : <></>
 }

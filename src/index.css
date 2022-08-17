@@ -24,6 +24,7 @@ body {
   background-color: lightblue;
   position: relative;
   left: 130px;
+  top: 10px;
   z-index: 6;
   width: 150px;
   height: 40px;
