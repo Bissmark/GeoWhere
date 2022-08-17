@@ -5,6 +5,9 @@ function Navbar() {
   return (
     <nav className="navBar">
       <ul>
+      <li>
+          <Link to="/Account">Account</Link>
+        </li>
         <li>
           <Link to="/">Home</Link>
         </li>

@@ -2,24 +2,39 @@ import React from 'react';
 import Layout from "./Layout";
 import PlayTrip from './PlayTrip';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
 import Map from "./Map";
-
-
-
-
+import { useState, useEffect } from 'react'
+import supabase from '../supabaseClient'
+import Auth from './Auth'
+import Account from './Account'
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="PlayTrip" element={<PlayTrip />} />
-          <Route path="correctMap" element={<Map />} />
+  const [session, setSession] = useState(null)
 
+  useEffect(() => {
+    setSession(supabase.auth.session())
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
+  return (
+    <div className="container">
+       <BrowserRouter>
+       <Routes>
+         <Route path="/" element={<Layout />}>
+           <Route path="PlayTrip" element={<PlayTrip />} />
+           <Route path="CorrectMap" element={<Map />} />
+           <Route path="Account" element={!session ? (
+        <Auth />
+      ) : (
+        <Account key={session.user.id} session={session} />
+      )} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+        </Routes>
+      </BrowserRouter>
+      
+    </div>
+  )
 }
