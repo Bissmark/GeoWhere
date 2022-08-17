@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0 auto;
+}
+
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,17 +15,64 @@ body {
   display: flex;
 }
 
-.guessLocation {
-  position: absolute;
-  left: 600px;
-  top: 400px;
+.score {
+  z-index: 10;
+}
+
+.guessButton {
+  background-color: lightblue;
+  position: relative;
+  left: 830px;
+  bottom: 300px;
   z-index: 5;
-  opacity: 0.3;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+}
+.guessButton:hover {
+  transform: scale(1.2);
+  background-color: rgb(0, 140, 255);
+  color: white;
+}
+
+.guessLocation {
+  position: relative;
+  left: 420px;
+  bottom: 150px;
+  z-index: 5;
+  opacity: 0.7;
+  transform: scale(0.4);
+  width: 100%;
 }
 
 .guessLocation:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
+  position: relative;
+  left: 260px;
+  bottom: 220px;
   opacity: 1;
+}
+
+.login {
+  margin: 5em;
+}
+
+nav {
+  width: 100%;
+  padding: 1em;
+}
+
+.timer {
+  position: relative;
+  bottom: 240px;
+  font-size: 30px;
+}
+
+.round {
+  position: relative;
+  font-size: 30px;
+  bottom: 850px;
+  right: -16px
 }
 
 code {

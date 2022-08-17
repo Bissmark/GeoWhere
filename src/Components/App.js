@@ -23,7 +23,7 @@ export default function App() {
     <div className="container">
        <BrowserRouter>
        <Routes>
-         <Route path="/" element={<Layout />}>
+           <Route path="/" element={<Layout />} />
            <Route path="PlayTrip" element={<PlayTrip />} />
            <Route path="CorrectMap" element={<Map />} />
            <Route path="Account" element={!session ? (
@@ -31,10 +31,11 @@ export default function App() {
       ) : (
         <Account key={session.user.id} session={session} />
       )} />
-        </Route>
-        </Routes>
+      </Routes>
       </BrowserRouter>
-      
-    </div>
-  )
+      </div>
+  );
 }
+
+      
+   

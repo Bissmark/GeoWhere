@@ -6,11 +6,6 @@ const containerStyle = {
   height: '600px'
 };
 
-const center = {
-  lat: 0,
-  lng: -180
-};
-
 const places = [
   [{ lat: 36.385822,  lng: 127.496827 },  {country: 'South Korea'}], // works
   [{ lat: 29.9756934,  lng: 31.1385296 },   {country: 'Eqypt'}], // works 
@@ -64,8 +59,6 @@ function MyComponent() {
     visible: true
   }
 
-  console.log(coordinates);
-
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -83,14 +76,10 @@ function MyComponent() {
         options={panoOptions}
         //onLoad={ onLoad }
     />
-        { /* Child components, such as markers, info windows, etc. */ }
+        {  }
         <></>
       </GoogleMap>
   ) : <></>
 }
 
-export default React.memo(MyComponent)
-
-//export default coordinates
-
-//export default Streetview;
+export default React.memo(MyComponent);

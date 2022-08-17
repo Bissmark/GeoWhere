@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
+import { score } from './Map';
 
 
-function App() {
+function Score() {
     const [scores, setScores] = useState([]);
   
     
@@ -22,13 +23,17 @@ function App() {
       setScores(data)
       console.log("Scores: ", data);
     }
-    
+
+    console.log(score);
+
     return (
   
       <div className="App">
-        
+        <div className='score'>Score: { score }</div>
       </div>
     );
   }
+
+  export default Score;
   
   
