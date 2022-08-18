@@ -72,9 +72,10 @@ const Account = ({ session }) => {
       ) : (
         <form className='profileForm' onSubmit={updateProfile}>
           <div>
-            <label htmlFor="username">Hello,</label>
+            <label className='username' htmlFor="username">Hello</label>
             <br />
             <input
+              className='text-black text-center'
               id="username"
               type="text"
               value={username || ''}
