@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { getRemainingTimeUntilMsTimestamp } from './utlis/CountdownTimerUtils';
+import QuizParent from "../QuizParent";
+import supabase from "../../supabaseClient";
 
 
 const defaultRemainingTime = {
@@ -21,6 +23,14 @@ const CountdownTimer = ({countdownTimestampMs}) => {
 
     function updateRemainingTime(countdown) {
         setRemainingTime(getRemainingTimeUntilMsTimestamp(countdown));
+        // conditional goes here that triggers prop methods when timer hits ZERO
+        const { seconds, minutes, hours, days } = remainingTime;
+
+        if (seconds + minutes + hours + days <= 0) {
+            setRemainingTime(defaultRemainingTime);
+            eraseSubmission();
+            fetchRandomQuiz();
+        }
         
     }
 

@@ -5,27 +5,45 @@ import supabase from "../supabaseClient";
 
 function QuizParent () {
     const [currentQuiz, setCurrentQuiz] = useState('');
-    async function fetchRandomQuiz(){
 
+    async function fetchRandomQuiz(){
        let {data} = await supabase
       .from('New Quizes')
       .select('*')
         const randomIndex = Math.floor(Math.random() * data.length);
-        // const futureQuizes = currentQuiz.filter((q) => Date.parse(q.timer) > Date.now());
+        if (data[randomIndex]) {
+            setCurrentQuiz(data[randomIndex].content);
+        }
     }
+    async function eraseSubmission () {
+       let { data: quizes } = await supabase
+      .from('New Quizes')
+      .select('*')
+      const quizIDs = quizes.map((quiz) => {
+        return (quiz.id);
+      });
+
+      quizIDs.forEach( async (ID) => {
+        const { data, error } = await supabase
+      .from('New Quizes')
+      .delete()
+      .match({id: ID});
+      });
+    }
+    
 
     useEffect(() => {
-        // const timerID = setInterval(() => {
-        // const randomIndex = currentQuiz.filter((q) => Date.parse(q.timer) > Date.now());
-        // setCurrentQuiz(randomIndex);
-        // },10000000);
-        // return () => clearInterval(timerID);
+        eraseSubmission();
         fetchRandomQuiz();
-        // setcurrentQuiz();
+        
       }, []);
     return(
         <div>
-            <h1>Quiz Parent coming soon</h1>
+            <h2>{ currentQuiz }</h2>
+            <Quiz />
+            <CountdownTimer countdownTimestampMs={1628454873000}/>
+            <CountdownTimer eraseSubmission={ eraseSubmission } fetchRandomQuiz={ fetchRandomQuiz } />
+
         </div>
     );
 }
