@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
 import GuessMap from "./GuessMap";
-
-
-
 import { coordinates } from "./Streetview";
-//import { center } from './GuessMap';
 
 
 const center = {
@@ -51,15 +47,13 @@ console.log(coordinates);
 let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
 export let score = calculateBonus(distance);
 
-export let round = 1;
+//export let round = 1;
 
 function MyComponent({ markerValue }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA",
   });
-
-
 
   const mapOptions = {
     styleControl: false,
@@ -89,12 +83,13 @@ function MyComponent({ markerValue }) {
   console.log('cords', coordinates)
 
   let clickedMarkerValues = {lat: markerValue[0], lng: markerValue[1]}
-  console.log('test', clickedMarkerValues)
+  console.log('test', clickedMarkerValues);
 
-  const position2 = {
-    lat: 37.772,
-    lng: -122.214
-  }
+
+
+  // const addScore = () => {
+  //   setScore(score + score);
+  // }
 
   const PolyLineBetweenGuessAndCorrect = [
     { lat: clickedMarkerValues.lat, lng: clickedMarkerValues.lng },
