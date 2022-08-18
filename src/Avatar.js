@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import supabase from './supabaseClient'
-import { VisuallyHidden } from '@reach/visually-hidden'
+
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
@@ -69,7 +69,7 @@ export default function Avatar({ url, size, onUpload }) {
           <label className="button primary block" htmlFor="single">
             Upload an avatar
           </label>
-          <VisuallyHidden>
+
             <input
               type="file"
               id="single"
@@ -77,7 +77,7 @@ export default function Avatar({ url, size, onUpload }) {
               onChange={uploadAvatar}
               disabled={uploading}
             />
-          </VisuallyHidden>
+
         </>
       )}
     </div>

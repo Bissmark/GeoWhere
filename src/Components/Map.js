@@ -3,7 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/
 import { coordinates } from "./Streetview";
 
 const containerStyle = {
-  width: "900px",
+  width: "1200px",
   height: "600px",
 };
 

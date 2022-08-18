@@ -11,6 +11,7 @@ import QuizForm from './Quizform';
 import QuizParent from './QuizParent';
 import CountdownTimer from './CountdownTimer/CountdownTimer';
 import Home from './Home';
+import Navbar from './NavBar';
 
 
 export default function App() {
@@ -25,8 +26,9 @@ export default function App() {
   }, [])
 
   return (
+    <BrowserRouter>
+      <Navbar/>
     <div className="container">
-       <BrowserRouter>
        <Routes>
            <Route path="/" element={<Home />} />
            <Route path="PlayTrip" element={<PlayTrip />} />
@@ -41,10 +43,8 @@ export default function App() {
         <Account key={session.user.id} session={session} />
       )} />
       </Routes>
-      </BrowserRouter>
+
       </div>
+      </BrowserRouter>
   );
 }
-
-      
-   
