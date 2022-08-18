@@ -1,7 +1,5 @@
 export const Round = ({ round }) => {
     return (
-        <div>
-            <p>Round {round}/5</p>
-        </div>
+        <div> Round {round}/5  </div>
     )
 }

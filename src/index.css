@@ -100,6 +100,10 @@ nav {
   padding: 1em;
 }
 
+img {
+  height: 300px;
+}
+
 .nextRound {
   background-color: #FACC15;
   color: #0F172A;
@@ -110,6 +114,20 @@ nav {
   width: 150px;
   height: 40px;
   border-radius: 10px;  
+}
+
+.finalScore {
+  display: inline-block;
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  left: 300px;
+  bottom: 25px;
+  z-index: 6;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .score {
