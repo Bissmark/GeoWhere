@@ -69,7 +69,7 @@ export default function Avatar({ url, size, onUpload }) {
           <label className="button primary block" htmlFor="single">
             Upload an avatar
           </label>
-          
+
             <input
               type="file"
               id="single"
@@ -77,7 +77,7 @@ export default function Avatar({ url, size, onUpload }) {
               onChange={uploadAvatar}
               disabled={uploading}
             />
-         
+
         </>
       )}
     </div>

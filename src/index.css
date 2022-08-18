@@ -30,11 +30,11 @@ body {
   color: #0F172A;
   position: relative;
   left: 130px;
-  top: 0px;
+  top: 10px;
   z-index: 6;
   width: 150px;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .guessButton:hover {
   transform: scale(1.2);
@@ -44,7 +44,7 @@ body {
 
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(-25%);
+    transform: translateY(-15%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
@@ -56,19 +56,18 @@ body {
 .guessLocation {
   display: inline-block;
   position: relative;
-  left: 720px;
-  bottom: 235px;
+  left: 600px;
+  bottom: 330px;
   z-index: 5;
-  opacity: 0.7;
-  transform: scale(0.4);
-  /* width: 100%; */
+  opacity: 0.3;
+  /* transform: scale3d(0.4, 0.4); */
 }
 
 .guessLocation:hover {
   display: inline-block;
-  transform: scale(1.2);
+  /* transform: scale3d(1.2, 1.2); */
   position: relative;
-  left: 560px;
+  left: 600px;
   bottom: 330px;
   opacity: 1;
 }
@@ -85,26 +84,34 @@ nav {
 .timer {
   display: inline-block;
   position: relative;
+  width: 180px;
+  max-width: 180px;
   bottom: 600px;
   font-size: 30px;
   z-index: 2;
   color: #FACC15;
   background-color: slategrey;
-  padding: 10px;
+  padding: 15px;
   border-radius: 0 5px 5px 0;
 }
 
 .round {
   display: inline-block;
   position: relative;
-  bottom: 847px;
-  left: 442px;
+  width: 180px;
+  max-width: 180px;
+  bottom: 852px;
+  left: 420px;
   font-size: 30px;
   z-index: 2;
   color: #FACC15;
   background-color: slategrey;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px 0 0 5px;
+}
+
+p {
+  display: contents;
 }
 
 code {
