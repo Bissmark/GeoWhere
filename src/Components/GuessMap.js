@@ -16,7 +16,6 @@ const containerStyle = {
  export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
-    const [round, setRound] = useState(1);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',

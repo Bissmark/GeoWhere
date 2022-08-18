@@ -82,9 +82,6 @@ function MyComponent({ locationNumber }) {
         <div className="timer">
           <Timer />
         </div>
-        <div className="round">
-          <Round />
-        </div>
    </div>
   ) : <></>
 }

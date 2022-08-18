@@ -4,6 +4,7 @@ import Streetview from "./Streetview";
 import Map from "./Map";
 import { useState } from "react";
 import { score } from "./Map";
+import Round from "./Round";
 
 function randomIntFromInterval(min, max) {
   // min and max included
@@ -13,7 +14,7 @@ function randomIntFromInterval(min, max) {
 function PlayTrip() {
   const [view, setView] = useState(0);
   const [markerLocation, setMarkerLocation] = useState([]);
-  const [round, setRound] = useState(1);
+  let [round, setRound] = useState(1);
   const [locationNumber, setLocationNumber] = useState(randomIntFromInterval(1, 10));
   
   const updateMarkers = (lat, lng) => {
@@ -23,31 +24,35 @@ function PlayTrip() {
 
   const guessLocation = () => {
     setView(view ? view - 1 : view + 1);
-    setLocationNumber(randomIntFromInterval(1, 10));
-    //round = round + 1;
   }
 
-  // const nextRound = () => {
-  //   setView(view ? view - 1 : view + 1);
-  //   console.log('guessed location', view);
-  //   setRound(round + 1); 
-  // }
+  const nextRound = () => {
+    setView(view ? view - 1 : view + 1);
+    setLocationNumber(randomIntFromInterval(1, 10));
+    if (round < 5) {
+      setRound(round + 1); 
+      console.log("Round:", round); 
+    }
+  }
 
   return (
     <>
       <div className="my-9">
         {!view ? (
           <div>
-            <Streetview locationNumber={locationNumber} />
+            <Streetview locationNumber={ locationNumber } />
             <GuessMap updateMarkers={updateMarkers} guessLocation={guessLocation}/>
+            {/* <div className="round"> */}
+              <Round className="round" round={ round }/>
+            {/* </div> */}
           </div>
         ) : (
           <div>
             <h1>Score: { score }</h1>
-            <button className="guessButton" onClick={() => setView(view ? view - 1 : view + 1)}>
+            <button className="guessButton" onClick={() => nextRound()}>
               Next Round
             </button>
-            <Map markerValue={markerLocation} />
+            <Map markerValue={markerLocation}/>
           </div>
         )}
       </div>
