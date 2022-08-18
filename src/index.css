@@ -113,11 +113,11 @@ nav {
 }
 
 .score {
+  display: inline-block;
   background-color: #FACC15;
   color: #0F172A;
   position: relative;
-  right: 300px;
-  top: 135px;
+  bottom: 25px;
   z-index: 6;
   width: 200px;
   height: 40px;
@@ -126,11 +126,12 @@ nav {
 }
 
 .totalScore {
+  display: inline-block;
   background-color: #FACC15;
   color: #0F172A;
   position: relative;
-  left: 300px;
-  top: 95px;
+  left: 500px;
+  bottom: 25px;
   z-index: 6;
   width: 200px;
   height: 40px;
@@ -157,8 +158,8 @@ nav {
   position: relative;
   width: 180px;
   max-width: 180px;
-  bottom: 852px;
-  left: 420px;
+  bottom: 600px;
+  left: 640px;
   font-size: 30px;
   z-index: 2;
   color: #FACC15;

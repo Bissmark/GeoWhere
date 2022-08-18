@@ -25,9 +25,7 @@ function Score({ roundScore }) {
     }
 
     return (
-      <div className="App">
-        <div className='score'>Score this round: { roundScore }</div>
-      </div>
+      <div className='score'>Score this round: { roundScore }</div>
     );
   }
 
