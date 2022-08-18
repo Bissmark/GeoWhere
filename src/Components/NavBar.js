@@ -13,7 +13,7 @@ function Navbar() {
           <Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/playWithFriends">Play With Friends</Link>
         </li>
         <li className="mr-6">
-          <Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/CorrectMap">Quiz</Link>
+          <Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/PlayTrip">Quiz</Link>
         </li>
         <li className="mr-6">
           <Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/Account">Account</Link>
@@ -26,4 +26,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
