@@ -12,6 +12,7 @@ import QuizParent from './QuizParent';
 import CountdownTimer from './CountdownTimer/CountdownTimer';
 
 
+
 export default function App() {
   const [session, setSession] = useState(null)
 
@@ -34,7 +35,7 @@ export default function App() {
            <Route path="Quiz" element={<QuizParent />} />
            <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
 
-           <Route path="LogIn" element={!session ? (
+           <Route path="Account" element={!session ? (
         <Auth />
       ) : (
         <Account key={session.user.id} session={session} />
