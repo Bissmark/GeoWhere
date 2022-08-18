@@ -6,7 +6,7 @@ class Round extends Component {
     render() {
         console.log(round);
         return (
-            <div className="round">
+            <div>
                 <p>Round { round } /5</p>
             </div>
         )

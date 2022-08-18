@@ -20,7 +20,7 @@ function PlayTrip() {
 
   return (
     <>
-      <div className="my-9">
+      <div className="my-3">
         {!view ? (
           <div>
             <Streetview />
