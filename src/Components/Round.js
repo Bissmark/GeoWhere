@@ -1,5 +1,7 @@
-export const Round = ({ round }) => {
+function Round({ round }) {
     return (
-        <div> Round {round}/5  </div>
-    )
+        <div className="round"> Round: {round}/5  </div>
+    );
 }
+
+export default Round;

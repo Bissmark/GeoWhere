@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Results } from "./Results";
+
+export let timerZero;
 
 class Timer extends Component {
     state = {
@@ -18,6 +21,7 @@ class Timer extends Component {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(this.myInterval)
+                    timerZero = 0;
                 } else {
                     this.setState(({ minutes }) => ({
                         minutes: minutes - 1,
@@ -38,7 +42,7 @@ class Timer extends Component {
         return (
             <div>
                 { minutes === 0 && seconds === 0
-                    ? <p>Time up!</p>
+                    ? <Results />
                     :   <p>Timer: { minutes }:{ seconds < 10 ? `0${ seconds }` : seconds }</p>
                 }
             </div>
