@@ -56,7 +56,7 @@ function PlayTrip() {
 
   return (
       <div className="my-3">
-        <MapWrapper totalScore={ totalScore } newRoundScore={ newRoundScore } round={ round }>
+        {/* <MapWrapper totalScore={ totalScore } newRoundScore={ newRoundScore } round={ round }> */}
           { round === 6 && (
             <div>
               <Results totalScore={ totalScore }/>
@@ -78,7 +78,7 @@ function PlayTrip() {
               <Map markerValue={ markerLocation } locationNumber={ locationNumber } />
             </div>
           )}
-        </MapWrapper>
+        {/* </MapWrapper> */}
       </div>
   );
 }

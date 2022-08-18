@@ -3,8 +3,8 @@ import TotalScore from "./TotalScore";
 export const Results = ({ totalScore }) => {
     return (
         <div>
-            <div>Congrats</div>
-            <TotalScore totalScore={ totalScore } />
+            <div className='text-yellow-500'>Congrats</div>
+            <TotalScore className="finalScore" totalScore={ totalScore } />
         </div>
     );
 };
