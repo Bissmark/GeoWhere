@@ -21,11 +21,11 @@ image 3
 ### David: 
 Had to learn to communicate with teamates and consistently update on where we are to avoid at least conflict as possible. I mainly did the CSS and was repsonsible for positioning the game and navigations.
 
-### Chris:
+### CJ:
 ...
 
 ### Rohan:
 ...
 
 # Credits:
-Chris did an excellent job getting the game running while Rohan setted up the backend with supabase.
+CJ did an excellent job getting the game running while Rohan setted up the backend with supabase.

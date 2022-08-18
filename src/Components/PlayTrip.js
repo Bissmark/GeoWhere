@@ -71,11 +71,11 @@ function PlayTrip() {
           { round !== 6 && view && (
             <div>
               <button className="nextRound" onClick={ nextRound }>
-                { round !== 6 ? 'Next Round' : 'Finish' }
+                { round !== 5 ? 'Next Round' : 'Finish' }
               </button>
               <Score newRoundScore={ newRoundScore }/>
               <TotalScore totalScore={ totalScore }/>
-              <Map markerValue={ markerLocation } locationNumber={ locationNumber } />
+              <Map markerValue={ markerLocation } locationNumber={ locationNumber }/>
             </div>
           )}
       </div>

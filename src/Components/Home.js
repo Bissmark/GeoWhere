@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeBackground from './../taclan-world.gif';
-//import logo from './logo.jpeg';
 
 function Home() {
-    
-
     return (
       <div className="flex justify-center flex-col my-10 text-center">
         <div className="mb-7">
@@ -21,11 +18,8 @@ function Home() {
         <br />
         <p className="text-yellow-500">The player scores more points depending on how close to the actual photo location they guess.</p>
       </div>
-
       </div>
     );
   }
-  
-  
-  
+
   export default Home;

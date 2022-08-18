@@ -47,7 +47,7 @@ function MyComponent({ markerValue, locationNumber }) {
         className="window-map"
         mapContainerStyle={containerStyle}
         center={coordinateStreetView}
-        zoom={2}
+        zoom={3}
         options={mapOptions}
         clickableIcons={false}
       >

@@ -68,12 +68,10 @@ body, html {
   bottom: 330px;
   z-index: 5;
   opacity: 0.3;
-  /* transform: scale3d(0.4, 0.4); */
 }
 
 .guessLocation:hover {
   display: inline-block;
-  /* transform: scale3d(1.2, 1.2); */
   position: relative;
   left: 600px;
   bottom: 330px;
@@ -205,7 +203,7 @@ img {
 .timer {
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: 180px;
   max-width: 180px;
   bottom: 600px;
   font-size: 30px;
@@ -240,4 +238,19 @@ p {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.congrats {
+  display: inline-block;
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  left: 500px;
+  bottom: 15px;
+  z-index: 6;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 7px;
 }
