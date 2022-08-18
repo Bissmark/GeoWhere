@@ -3,7 +3,7 @@ import supabase from "../supabaseClient";
 import { useState, useEffect } from "react";
 
 
-function Quiz() {
+function Quiz(props) {
   const [quizes, setQuizes] = useState([]);
   const [content, setContent] = useState('');
 
@@ -31,14 +31,16 @@ function Quiz() {
  
   return (
     <div >
-      <h1>Quizes post by users</h1>
-      { quizes.map(quiz => (
-        <div key={quiz.id}>{ quiz.content }</div>
-      ))}
+      <h1>Welcome! </h1>
       <div>
         <input type="text" value={ content } onChange={ handleContent } />
         <button onClick={ handleSubmit }>Create Quiz</button>
       </div>
+
+      { quizes.map(quiz => (
+        <div key={quiz.id}>{ quiz.content }</div>
+      ))}
+      
     </div>
   );
 }

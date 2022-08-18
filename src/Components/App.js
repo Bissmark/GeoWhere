@@ -8,7 +8,8 @@ import supabase from '../supabaseClient'
 import Auth from './Auth'
 import Account from './Account'
 import QuizForm from './Quizform';
-import Quiz from './Quiz';
+import QuizParent from './QuizParent';
+import CountdownTimer from './CountdownTimer/CountdownTimer';
 
 
 export default function App() {
@@ -30,7 +31,9 @@ export default function App() {
            <Route path="PlayTrip" element={<PlayTrip />} />
            <Route path="CorrectMap" element={<Map />} /> 
            <Route path="Quizform" element={<QuizForm />} />
-           <Route path="Quiz" element={<Quiz />} />
+           <Route path="Quiz" element={<QuizParent />} />
+           <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
+
            <Route path="LogIn" element={!session ? (
         <Auth />
       ) : (

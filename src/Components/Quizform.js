@@ -1,5 +1,6 @@
 import React from "react";
 import Quiz from "./Quiz";
+import { Link } from "react-router-dom";
 
 const QuizForm = () => {
   return (
@@ -25,7 +26,7 @@ const QuizForm = () => {
                   <h2>Customize the quiz</h2>
                   <h4>Add fun questions or pick particular locations around the world.</h4>
               </div>
-          </><button Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/Quiz" >Create Quiz</button></>
+          </><Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/QuizParent">Create Quiz</Link></>
     
     
   );

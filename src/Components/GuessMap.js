@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import Timer from './Timer';
-import Score from './scores';
-
-
 
 const center = {
   lat: 0,
@@ -20,6 +16,7 @@ const containerStyle = {
  export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
+    const [round, setRound] = useState(1);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -35,11 +32,9 @@ const containerStyle = {
 
     const _handleGuessClick = () => {
         guessLocation();
+        setRound(round + 1);
+        //addScore();
     }
-
-    // const _handleLocationSelected = () => {
-    //     locationSelected(selectedLocation);
-    // }
 
     const mapOptions = {
         styleControl: false,
@@ -49,6 +44,8 @@ const containerStyle = {
         fullscreenControl: false,
         clickableIcons: false
     }
+
+    console.log(round);
 
     return isLoaded ? (
         <div className="guessLocation">
