@@ -28,10 +28,10 @@ const CountdownTimer = ({countdownTimestampMs}) => {
 
         if (seconds + minutes + hours + days <= 0) {
             setRemainingTime(defaultRemainingTime);
-            eraseSubmission();
-            fetchRandomQuiz();
+            //eraseSubmission();
+            //fetchRandomQuiz();
         }
-        
+
     }
 
     return(

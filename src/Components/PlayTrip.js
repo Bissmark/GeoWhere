@@ -6,9 +6,9 @@ import { useState } from "react";
 import { calculateDistance } from "../Utils/DistanceCalc";
 import { locationCoordinates } from "./Locations";
 import { Results } from "./Results";
-import MapWrapper from "./MapWrapper";
 import Score from "./Score";
 import TotalScore from "./TotalScore";
+import Round from "./Round";
 
 function randomIntFromInterval() {
   return Math.floor(Math.random() * (locationCoordinates.length - 1 - 0 + 1) + 0);
@@ -55,8 +55,7 @@ function PlayTrip() {
   }
 
   return (
-      <div className="my-3">
-        {/* <MapWrapper totalScore={ totalScore } newRoundScore={ newRoundScore } round={ round }> */}
+      <div>
           { round === 6 && (
             <div>
               <Results totalScore={ totalScore }/>
@@ -64,6 +63,7 @@ function PlayTrip() {
           )}
           { round !== 6 && !view && (
             <div>
+              <Round round={ round }/>
               <Streetview locationNumber={ locationNumber } />
               <GuessMap updateMarkers={ updateMarkers } guessLocation={ guessLocation }/>
             </div>
@@ -73,12 +73,11 @@ function PlayTrip() {
               <button className="nextRound" onClick={ nextRound }>
                 { round !== 6 ? 'Next Round' : 'Finish' }
               </button>
-              <Score className="score" newRoundScore={ newRoundScore }/>
-              <TotalScore className="totalScore" totalScore={ totalScore }/>
+              <Score newRoundScore={ newRoundScore }/>
+              <TotalScore totalScore={ totalScore }/>
               <Map markerValue={ markerLocation } locationNumber={ locationNumber } />
             </div>
           )}
-        {/* </MapWrapper> */}
       </div>
   );
 }

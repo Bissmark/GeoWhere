@@ -1,5 +1,4 @@
 import React from "react";
-import Quiz from "./Quiz";
 import { Link } from "react-router-dom";
 
 const QuizForm = () => {

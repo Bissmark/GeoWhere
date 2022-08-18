@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeBackground from './../HomeBackground.jpeg';
-//import logo from './logo.jpeg';
 
 function Home() {
-    
-
     return (
       <div className="flex justify-center flex-col my-10 text-center">
         <h1 className='text-yellow-500 text-2xl'>Welcome to GeoWhere?</h1>
@@ -20,7 +17,5 @@ function Home() {
       </div>
     );
   }
-  
-  
-  
+
   export default Home;

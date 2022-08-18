@@ -8,13 +8,13 @@ function QuizParent () {
 
 
     async function fetchRandomQuiz(){
-       let {data: quizes}  = await supabase
-      .from('New Quizes')
-      .select('*')
+        let {data: quizes}  = await supabase
+          .from('New Quizes')
+          .select('*')
 
         let {data} = await supabase
-        .from('New Quizes')
-        .select('*')
+          .from('New Quizes')
+          .select('*')
 
         const randomIndex = Math.floor(Math.random() * data.length);
         if (data[randomIndex]) {
@@ -22,18 +22,18 @@ function QuizParent () {
         }
     }
     async function eraseSubmission () {
-       let { data: quizes } = await supabase
-      .from('New Quizes')
-      .select('*')
+      let { data: quizes } = await supabase
+        .from('New Quizes')
+        .select('*')
       const quizIDs = quizes.map((quiz) => {
         return (quiz.id);
       });
 
       quizIDs.forEach( async (ID) => {
         const { data, error } = await supabase
-      .from('New Quizes')
-      .delete()
-      .match({id: ID});
+          .from('New Quizes')
+          .delete()
+          .match({id: ID});
       });
     }
     

@@ -11,9 +11,7 @@ const containerStyle = {
   height: '200px',
 };
 
-//export let selectedLocation, setSelectedLocation;// = useState();
-
- export default function GuessMap({ updateMarkers, guessLocation }) {
+export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -23,7 +21,6 @@ const containerStyle = {
     })
 
     const _handleMapClick = (ev, lat, lng) => {
-        // console.log(456,e)
         setSelected(true);
         setSelectedLocation(ev.latLng);
         updateMarkers(lat, lng);
@@ -34,13 +31,7 @@ const containerStyle = {
     }
 
     const mapOptions = {
-        styleControl: false,
-        mapTypeControl: false,
-        streetViewControl: false,
-        zoomControl: false,
-        fullscreenControl: false,
-        clickableIcons: false,
-        rotateControl: false
+        disableDefaultUI: true
     }
 
     return isLoaded ? (
