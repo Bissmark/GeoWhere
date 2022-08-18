@@ -37,14 +37,12 @@ function PlayTrip() {
 
   return (
     <>
-      <div className="my-9">
+      <div className="my-3">
         {!view ? (
           <div>
             <Streetview locationNumber={ locationNumber } />
             <GuessMap updateMarkers={updateMarkers} guessLocation={guessLocation}/>
-            {/* <div className="round"> */}
-              <Round className="round" round={ round }/>
-            {/* </div> */}
+            <Round className="round" round={ round }/>
           </div>
         ) : (
           <div>
