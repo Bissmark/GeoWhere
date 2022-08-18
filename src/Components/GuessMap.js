@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import Timer from './Timer';
+import Score from './scores';
 
-export const center = {
+
+
+const center = {
   lat: 0,
   lng: -180
 };
@@ -11,7 +15,9 @@ const containerStyle = {
   height: '200px',
 };
 
-function MyComponent({ locationSelected }) {
+//export let selectedLocation, setSelectedLocation;// = useState();
+
+ export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
 
@@ -20,21 +26,20 @@ function MyComponent({ locationSelected }) {
         googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
     })
 
-    const _handleMapClick = (e) => {
+    const _handleMapClick = (ev, lat, lng) => {
+        // console.log(456,e)
         setSelected(true);
-        setSelectedLocation(e.latLng);
+        setSelectedLocation(ev.latLng);
+        updateMarkers(lat, lng);
     }
 
-    const _handleLocationSelected = () => {
-        locationSelected(selectedLocation);
+    const _handleGuessClick = () => {
+        guessLocation();
     }
 
-    const guessButton = (
-        <button>
-            onClick={_handleLocationSelected}
-            Guess
-        </button>
-    )
+    // const _handleLocationSelected = () => {
+    //     locationSelected(selectedLocation);
+    // }
 
     const mapOptions = {
         styleControl: false,
@@ -47,22 +52,20 @@ function MyComponent({ locationSelected }) {
 
     return isLoaded ? (
         <div className="guessLocation">
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={1}
-            onClick={_handleMapClick}
-            options={ mapOptions }
-        >
-        <Marker 
-            position={ selectedLocation }
-            clickable={false}
-        />
-            { guessButton/* Child components, such as markers, info windows, etc. */ }
-            <></>
-        </GoogleMap>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={1}
+                onClick={(ev) => _handleMapClick(ev, ev.latLng.lat(), ev.latLng.lng())}
+                options={ mapOptions }
+            >
+            <Marker 
+                position={ selectedLocation }
+                clickable={false}
+            />
+                <></>
+            </GoogleMap>
+            <button className="guessButton" onClick={() => _handleGuessClick()}>Guess</button>
         </div>
     ) : <></>
 }
-
-export default React.memo(MyComponent);

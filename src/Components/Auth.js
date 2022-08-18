@@ -21,26 +21,27 @@ export default function Auth() {
   }
 
   return (
-    
-      <div >
+      
+      <div className="login w-full max-w-xs my-5">
         {loading ? (
           'Sending magic link...'
         ) : (
-          <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
+          <form className="bg-slate-400 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleLogin}>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+            <input 
               id="email"
-              className="inputField"
+              className="inputField shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               placeholder="Your email Please"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button>
-             Login
+            <button className="mt-5 bg-yellow-400 hover:bg-orange-700 active:animate-ping text-slate font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+              Login
             </button>
           </form>
         )}
+        <p className="text-center text-gray-500 text-xs">When you submit, you'll receive an email confirmation so no need for a password.</p>
       </div>
   )
 }
