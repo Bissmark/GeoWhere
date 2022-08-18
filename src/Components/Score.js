@@ -3,7 +3,7 @@ import supabase from "../supabaseClient";
 //import { score } from './Map';
 
 
-function Score({ roundScore }) {
+function Score({ newRoundScore }) {
     const [scores, setScores] = useState([]);
   
     
@@ -25,7 +25,7 @@ function Score({ roundScore }) {
     }
 
     return (
-      <div className='score'>Score this round: { roundScore }</div>
+      <div className='score'>Score this round: { newRoundScore }</div>
     );
   }
 

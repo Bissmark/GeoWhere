@@ -13,7 +13,7 @@ const containerStyle = {
 export let coordinates = locationCoordinates; // Get coordinates
 //let country = currentPlace[1].country;
 
-function MyComponent({ locationNumber }) {
+function MyComponent({ locationNumber, round }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
@@ -45,7 +45,7 @@ function MyComponent({ locationNumber }) {
           <Timer />
         </div>
         <div className='round'>
-          <Round />
+          <Round round={round}/>
         </div>
    </div>
   ) : <></>

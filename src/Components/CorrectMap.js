@@ -8,9 +8,9 @@ function CorrectMap () {
 
   return (
     <>
-      <Map />
+      {/* <Map />
       <Streetview />
-      <GuessMap />
+      <GuessMap /> */}
     </>
   );
 };
