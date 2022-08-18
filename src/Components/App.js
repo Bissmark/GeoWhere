@@ -7,9 +7,10 @@ import { useState, useEffect } from 'react'
 import supabase from '../supabaseClient'
 import Auth from './Auth'
 import Account from './Account'
-import CorrectMap from './CorrectMap';
-import Home from './Home';
-import Navbar from './NavBar';
+import QuizForm from './Quizform';
+import QuizParent from './QuizParent';
+import CountdownTimer from './CountdownTimer/CountdownTimer';
+
 
 export default function App() {
   const [session, setSession] = useState(null)
@@ -23,16 +24,26 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter>
-      <Navbar />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="PlayTrip" element={<PlayTrip />} />
-            <Route path="map" element={<Map />} />
-            <Route path="Account" element={!session ? <Auth /> : <Account key={session.user.id} session={session} />} />
-          </Routes>
-        </div> 
-    </BrowserRouter>
+    <div className="container">
+       <BrowserRouter>
+       <Routes>
+           <Route path="/" element={<Layout />} />
+           <Route path="PlayTrip" element={<PlayTrip />} />
+           <Route path="CorrectMap" element={<Map />} /> 
+           <Route path="Quizform" element={<QuizForm />} />
+           <Route path="Quiz" element={<QuizParent />} />
+           <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
+
+           <Route path="LogIn" element={!session ? (
+        <Auth />
+      ) : (
+        <Account key={session.user.id} session={session} />
+      )} />
+      </Routes>
+      </BrowserRouter>
+      </div>
   );
 }
+
+      
+   
