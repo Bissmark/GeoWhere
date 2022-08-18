@@ -76,6 +76,21 @@ body {
   margin: 5em;
 }
 
+.signOut {
+  width: 100px;
+  height: 40px;
+  margin-left: 250px;
+}
+
+.profile {
+  margin-top: 50px;
+  color: white;
+}
+
+.upload {
+  margin-left: 10px;
+}
+
 nav {
   width: 100%;
   padding: 1em;
