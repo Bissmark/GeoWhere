@@ -16,7 +16,6 @@ const containerStyle = {
  export default function GuessMap({ updateMarkers, guessLocation }) {
     const [isSelected, setSelected] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState();
-    const [round, setRound] = useState(1);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -32,8 +31,6 @@ const containerStyle = {
 
     const _handleGuessClick = () => {
         guessLocation();
-        setRound(round + 1);
-        //addScore();
     }
 
     const mapOptions = {
@@ -44,8 +41,6 @@ const containerStyle = {
         fullscreenControl: false,
         clickableIcons: false
     }
-
-    console.log(round);
 
     return isLoaded ? (
         <div className="guessLocation">

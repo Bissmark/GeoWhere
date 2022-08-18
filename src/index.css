@@ -16,6 +16,10 @@ body {
   background-color: #333;
 }
 
+.navBar {
+  text-align: center;
+}
+
 .score {
   position: relative;
   z-index: 10;
@@ -26,7 +30,7 @@ body {
   color: #0F172A;
   position: relative;
   left: 130px;
-  top: 5px;
+  top: 0px;
   z-index: 6;
   width: 150px;
   height: 40px;
@@ -35,7 +39,6 @@ body {
 .guessButton:hover {
   transform: scale(1.2);
   background-color: #C2410C;
-  /* color: white; */
   animation: bounce 1s infinite;
 }
 
@@ -54,7 +57,7 @@ body {
   display: inline-block;
   position: relative;
   left: 720px;
-  bottom: 200px;
+  bottom: 235px;
   z-index: 5;
   opacity: 0.7;
   transform: scale(0.4);
@@ -66,7 +69,7 @@ body {
   transform: scale(1.2);
   position: relative;
   left: 560px;
-  bottom: 315px;
+  bottom: 330px;
   opacity: 1;
 }
 
@@ -82,21 +85,26 @@ nav {
 .timer {
   display: inline-block;
   position: relative;
-  bottom: 578px;
-  left: 30px;
+  bottom: 600px;
   font-size: 30px;
   z-index: 2;
-  color: white;
+  color: #FACC15;
+  background-color: slategrey;
+  padding: 10px;
+  border-radius: 0 5px 5px 0;
 }
 
 .round {
   display: inline-block;
   position: relative;
-  bottom: 291px;
-  left: 340px;
+  bottom: 847px;
+  left: 442px;
   font-size: 30px;
   z-index: 2;
-  color: white;
+  color: #FACC15;
+  background-color: slategrey;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 code {

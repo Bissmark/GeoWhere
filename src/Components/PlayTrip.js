@@ -4,11 +4,18 @@ import Streetview from "./Streetview";
 import Map from "./Map";
 import { useState } from "react";
 import { score } from "./Map";
+import Round from "./Round";
+
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 function PlayTrip() {
   const [view, setView] = useState(0);
   const [markerLocation, setMarkerLocation] = useState([]);
-  //const [score, setScore] = useState(0);
+  let [round, setRound] = useState(1);
+  const [locationNumber, setLocationNumber] = useState(randomIntFromInterval(1, 10));
   
   const updateMarkers = (lat, lng) => {
     setMarkerLocation([lat,lng])
@@ -17,29 +24,33 @@ function PlayTrip() {
 
   const guessLocation = () => {
     setView(view ? view - 1 : view + 1);
-    console.log('guessed location', view);
   }
 
-  // const addScore = () => {
-  //   score = score + score;
-  //   console.log(score);
-  // }
-
-  const TotalScore = score + score;
+  const nextRound = () => {
+    setView(view ? view - 1 : view + 1);
+    setLocationNumber(randomIntFromInterval(1, 10));
+    if (round < 5) {
+      setRound(round + 1); 
+      console.log("Round:", round); 
+    }
+  }
 
   return (
     <>
-      <div className="my-9">
+      <div className="my-3">
         {!view ? (
           <div>
-            <Streetview />
+            <Streetview locationNumber={ locationNumber } />
             <GuessMap updateMarkers={updateMarkers} guessLocation={guessLocation}/>
+            <Round className="round" round={ round }/>
           </div>
         ) : (
           <div>
-            <Map markerValue={markerLocation}/>
             <h1>Score: { score }</h1>
-            <h1>TotalScore: { TotalScore }</h1>
+            <button className="guessButton" onClick={() => nextRound()}>
+              Next Round
+            </button>
+            <Map markerValue={markerLocation}/>
           </div>
         )}
       </div>

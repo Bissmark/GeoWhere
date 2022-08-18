@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
 
-    <nav className="navBar flex ">
+    <nav className="navBar flex justify-center ">
       <ul className="flex">
         <li className="mr-6">
           <Link className="text-3xl text-yellow-500 hover:text-orange-700" to="/">Home</Link>
