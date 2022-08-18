@@ -9,7 +9,7 @@ const center = {
 };
 
 const containerStyle = {
-  width: "900px",
+  width: "1200px",
   height: "600px",
 };
 
