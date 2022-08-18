@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import supabase from "../supabaseClient";
-import { score } from './Map';
+//import { score } from './Map';
 
 
-function Score() {
+function Score({ roundScore }) {
     const [scores, setScores] = useState([]);
   
     
@@ -24,13 +24,8 @@ function Score() {
       console.log("Scores: ", data);
     }
 
-    console.log(score);
-
     return (
-  
-      <div className="App">
-        <div className='score'>Score: { score }</div>
-      </div>
+      <div className='score'>Score this round: { roundScore }</div>
     );
   }
 

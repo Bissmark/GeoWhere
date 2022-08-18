@@ -39,7 +39,8 @@ const containerStyle = {
         streetViewControl: false,
         zoomControl: false,
         fullscreenControl: false,
-        clickableIcons: false
+        clickableIcons: false,
+        rotateControl: false
     }
 
     return isLoaded ? (

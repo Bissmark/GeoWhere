@@ -66,7 +66,7 @@ export default function Avatar({ url, size, onUpload }) {
         'Uploading...'
       ) : (
         <>
-          <label className="button primary block" htmlFor="single">
+          <label className="button primary block my-5" htmlFor="single">
             Upload an avatar
           </label>
 
@@ -76,6 +76,7 @@ export default function Avatar({ url, size, onUpload }) {
               accept="image/*"
               onChange={uploadAvatar}
               disabled={uploading}
+              className="upload"
             />
 
         </>

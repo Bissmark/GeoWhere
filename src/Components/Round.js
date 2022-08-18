@@ -1,11 +1,7 @@
-import React, { Component } from "react";
-
-function Round({ round }) {
+export const Round = ({ round }) => {
     return (
-        <div className="round">
+        <div>
             <p>Round {round}/5</p>
         </div>
     )
 }
-
-export default Round;

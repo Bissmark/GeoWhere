@@ -66,21 +66,23 @@ const Account = ({ session }) => {
   }
 
   return (
-    <div>
+    <div className='profile flex justify-center flex-col my-10 text-center my-5'>
       {loading ? (
         'Saving ...'
       ) : (
-        <form onSubmit={updateProfile}>
+        <form className='profileForm' onSubmit={updateProfile}>
           <div>
-            <label htmlFor="username">Hello,  </label>
+            <label className='username' htmlFor="username">Hello</label>
+            <br />
             <input
+              className='text-black text-center'
               id="username"
               type="text"
               value={username || ''}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div>
+          <div className='my-8 text-lg'>
               <Avatar
             url={avatar_url}
             size={150}
@@ -91,7 +93,7 @@ const Account = ({ session }) => {
         />
           </div>
           <div>
-            <button disabled={loading}>
+            <button className=" bg-yellow-400 hover:bg-orange-700 text-black active:animate-ping text-slate font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled={loading}>
               Update profile
             </button>
           </div>
@@ -100,6 +102,7 @@ const Account = ({ session }) => {
       <button
         type="button"
         onClick={() => supabase.auth.signOut()}
+        className="signOut mt-12 bg-yellow-400 hover:bg-orange-700 text-black active:animate-ping text-slate font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         Sign Out
       </button>

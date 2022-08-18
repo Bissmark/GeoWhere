@@ -6,10 +6,16 @@ import supabase from "../supabaseClient";
 function QuizParent () {
     const [currentQuiz, setCurrentQuiz] = useState('');
 
+
     async function fetchRandomQuiz(){
-       let {data} = await supabase
+       let {data: quizes}  = await supabase
       .from('New Quizes')
       .select('*')
+
+        let {data} = await supabase
+        .from('New Quizes')
+        .select('*')
+
         const randomIndex = Math.floor(Math.random() * data.length);
         if (data[randomIndex]) {
             setCurrentQuiz(data[randomIndex].content);
@@ -35,8 +41,13 @@ function QuizParent () {
     useEffect(() => {
         eraseSubmission();
         fetchRandomQuiz();
+
         
       }, []);
+
+        // setcurrentQuiz();
+
+
     return(
         <div>
             <h2>{ currentQuiz }</h2>
