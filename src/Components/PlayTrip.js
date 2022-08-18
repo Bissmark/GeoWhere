@@ -7,6 +7,8 @@ import { calculateDistance } from "../Utils/DistanceCalc";
 import { locationCoordinates } from "./Locations";
 import { Results } from "./Results";
 import MapWrapper from "./MapWrapper";
+import Score from "./Score";
+import TotalScore from "./TotalScore";
 
 function randomIntFromInterval() {
   return Math.floor(Math.random() * (locationCoordinates.length - 1 - 0 + 1) + 0);
@@ -71,6 +73,8 @@ function PlayTrip() {
               <button className="nextRound" onClick={ nextRound }>
                 { round !== 6 ? 'Next Round' : 'Finish' }
               </button>
+              <Score className="score" newRoundScore={ newRoundScore }/>
+              <TotalScore className="totalScore" totalScore={ totalScore }/>
               <Map markerValue={ markerLocation } locationNumber={ locationNumber } />
             </div>
           )}
