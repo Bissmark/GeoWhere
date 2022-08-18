@@ -46,7 +46,7 @@ let currentPlace = places[Math.floor(Math.random() * (places.length))];
 export let coordinates = currentPlace[0]; // Get coordinates
 //let country = currentPlace[1].country;
 
-function MyComponent() {
+function MyComponent({ locationNumber }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
@@ -73,7 +73,7 @@ function MyComponent() {
         addressControl={false}
       >
         <StreetViewPanorama
-        position={ coordinates }
+        position={ places[locationNumber][0] }
         options={panoOptions}
     />
         {  }

@@ -32,8 +32,6 @@ const containerStyle = {
 
     const _handleGuessClick = () => {
         guessLocation();
-        setRound(round + 1);
-        //addScore();
     }
 
     const mapOptions = {
@@ -44,8 +42,6 @@ const containerStyle = {
         fullscreenControl: false,
         clickableIcons: false
     }
-
-    console.log(round);
 
     return isLoaded ? (
         <div className="guessLocation">

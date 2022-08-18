@@ -3,7 +3,6 @@ import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/
 import GuessMap from "./GuessMap";
 import { coordinates } from "./Streetview";
 
-
 const center = {
   lat: 0,
   lng: -180,
@@ -14,10 +13,6 @@ const containerStyle = {
   height: "600px",
 };
 
-// const PolyLineBetweenGuessAndCorrect = [
-//   { lat: center.lat, lng: center.lng },
-//   { lat: coordinates.lat, lng: coordinates.lng },
-// ];
 
 function calcCrow(lat1, lon1, lat2, lon2) {
   const R = 6371; // km
@@ -41,15 +36,16 @@ function calculateBonus(km) {
   return Math.round(temp > 1 ? 10000 : temp * 10000);
 }
 
-console.log(center);
-console.log(coordinates);
-
+// this needs fixing to change the lat and lng of center to the marker coordinates
 let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
 export let score = calculateBonus(distance);
 
+//export let TotalScore = TotalScore + score;
+
 //export let round = 1;
 
-function MyComponent({ markerValue }) {
+function MyComponent({ markerValue, guessLocation }) {
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA",
@@ -77,6 +73,11 @@ function MyComponent({ markerValue }) {
     zIndex: 1,
   };
 
+  // const _handleNextRound = () => {
+  //   setRound(round + 1);
+  //   guessLocation();
+  // }
+
   console.log(GuessMap.selectedLocation);
 
   console.log(123123, markerValue)
@@ -85,20 +86,15 @@ function MyComponent({ markerValue }) {
   let clickedMarkerValues = {lat: markerValue[0], lng: markerValue[1]}
   console.log('test', clickedMarkerValues);
 
-
-
-  // const addScore = () => {
-  //   setScore(score + score);
-  // }
-
   const PolyLineBetweenGuessAndCorrect = [
     { lat: clickedMarkerValues.lat, lng: clickedMarkerValues.lng },
     { lat: coordinates.lat, lng: coordinates.lng },
   ];
 
+
+
   return isLoaded ? (
     <div>
-
       <GoogleMap
         className="window-map"
         mapContainerStyle={containerStyle}
