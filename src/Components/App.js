@@ -10,6 +10,7 @@ import Account from './Account'
 import QuizForm from './Quizform';
 import QuizParent from './QuizParent';
 import CountdownTimer from './CountdownTimer/CountdownTimer';
+import Home from './Home';
 
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
     <div className="container">
        <BrowserRouter>
        <Routes>
-           <Route path="/" element={<Layout />} />
+           <Route path="/" element={<Home />} />
            <Route path="PlayTrip" element={<PlayTrip />} />
            <Route path="CorrectMap" element={<Map />} /> 
            <Route path="Quizform" element={<QuizForm />} />

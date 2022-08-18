@@ -81,6 +81,44 @@ nav {
   padding: 1em;
 }
 
+.nextRound {
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  left: 400px;
+  bottom: 20px;
+  z-index: 6;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;  
+}
+
+.score {
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  right: 300px;
+  top: 135px;
+  z-index: 6;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.totalScore {
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  left: 300px;
+  top: 95px;
+  z-index: 6;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 .timer {
   display: inline-block;
   position: relative;

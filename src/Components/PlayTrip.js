@@ -3,58 +3,79 @@ import GuessMap from "./GuessMap";
 import Streetview from "./Streetview";
 import Map from "./Map";
 import { useState } from "react";
-import { score } from "./Map";
-import Round from "./Round";
+import { calculateDistance } from "../Utils/DistanceCalc";
+import { locationCoordinates } from "./Locations";
+import { Results } from "./Results";
+import MapWrapper from "./MapWrapper";
 
-function randomIntFromInterval(min, max) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function randomIntFromInterval() {
+  return Math.floor(Math.random() * (locationCoordinates.length - 1 - 0 + 1) + 0);
+}
+
+function randomIntFromIntervalNotSameOne(oldNum) {
+  let newNum = randomIntFromInterval();
+  if (newNum !== oldNum) {
+    return newNum;
+  }
+  return randomIntFromIntervalNotSameOne(oldNum);
 }
 
 function PlayTrip() {
   const [view, setView] = useState(0);
   const [markerLocation, setMarkerLocation] = useState([]);
-  let [round, setRound] = useState(1);
-  const [locationNumber, setLocationNumber] = useState(randomIntFromInterval(1, 10));
+  const [locationNumber, setLocationNumber] = useState(randomIntFromInterval());
+  const [round, setRound] = useState(1);
+  const [totalScore, setTotalScore] = useState(0);
+  const [newRoundScore, setNewRoundScore] = useState(0);
   
   const updateMarkers = (lat, lng) => {
-    setMarkerLocation([lat,lng])
-    console.log('this one is good', markerLocation)
-  }
+    setMarkerLocation([lat,lng]);
+  };
 
   const guessLocation = () => {
     setView(view ? view - 1 : view + 1);
-  }
+    updateRoundScore();
+  };
 
   const nextRound = () => {
     setView(view ? view - 1 : view + 1);
-    setLocationNumber(randomIntFromInterval(1, 10));
-    if (round < 5) {
-      setRound(round + 1); 
-      console.log("Round:", round); 
-    }
+    setLocationNumber(randomIntFromIntervalNotSameOne(locationNumber));
+    setRound(round + 1);
+  };
+
+  const updateRoundScore = () => {
+    let originalLocationCoords = locationCoordinates[locationNumber][0];
+    let points = guessLocation
+      ? calculateDistance(originalLocationCoords.lat, originalLocationCoords.lng, markerLocation[0], markerLocation[1])
+      : 0;
+      setNewRoundScore(points);
+      setTotalScore(totalScore + points);
   }
 
   return (
-    <>
       <div className="my-3">
-        {!view ? (
-          <div>
-            <Streetview locationNumber={ locationNumber } />
-            <GuessMap updateMarkers={updateMarkers} guessLocation={guessLocation}/>
-            <Round className="round" round={ round }/>
-          </div>
-        ) : (
-          <div>
-            <h1>Score: { score }</h1>
-            <button className="guessButton" onClick={() => nextRound()}>
-              Next Round
-            </button>
-            <Map markerValue={markerLocation}/>
-          </div>
-        )}
+        <MapWrapper totalScore={ totalScore } newRoundScore={ newRoundScore } round={ round }>
+          { round === 6 && (
+            <div>
+              <Results totalScore={ totalScore }/>
+            </div>
+          )}
+          { round !== 6 && !view && (
+            <div>
+              <Streetview locationNumber={ locationNumber } />
+              <GuessMap updateMarkers={ updateMarkers } guessLocation={ guessLocation }/>
+            </div>
+          )}
+          { round !== 6 && view && (
+            <div>
+              <button className="nextRound" onClick={ nextRound }>
+                { round !== 6 ? 'Next Round' : 'Finish' }
+              </button>
+              <Map markerValue={ markerLocation } locationNumber={ locationNumber } />
+            </div>
+          )}
+        </MapWrapper>
       </div>
-    </>
   );
 }
 
