@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import supabase from '../supabaseClient'
 import Auth from './Auth'
 import Account from './Account'
+import Quiz from './Quiz';
 
 export default function App() {
   const [session, setSession] = useState(null)
@@ -26,6 +27,8 @@ export default function App() {
            <Route path="/" element={<Layout />} />
            <Route path="PlayTrip" element={<PlayTrip />} />
            <Route path="CorrectMap" element={<Map />} />
+           <Route path="Quiz" element={<Quiz />} />
+           
            <Route path="Account" element={!session ? (
         <Auth />
       ) : (
