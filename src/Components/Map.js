@@ -1,62 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
-import GuessMap from "./GuessMap";
 import { coordinates } from "./Streetview";
-
-const center = {
-  lat: 0,
-  lng: -180,
-};
 
 const containerStyle = {
   width: "1200px",
   height: "600px",
 };
 
-
-function calcCrow(lat1, lon1, lat2, lon2) {
-  const R = 6371; // km
-  const dLat = toRad(lat2 - lat1);
-  const dLon = toRad(lon2 - lon1);
-  lat1 = toRad(lat1);
-  lat2 = toRad(lat2);
-
-  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const d = R * c;
-  return d;
-}
-
-function toRad(value) {
-  return (value * Math.PI) / 180;
-}
-
-function calculateBonus(km) {
-  const temp = Math.pow(((km + 100) / km) * 0.2, 6) * 4000;
-  return Math.round(temp > 1 ? 10000 : temp * 10000);
-}
-
-// this needs fixing to change the lat and lng of center to the marker coordinates
-let distance = calcCrow(center.lat, center.lng, coordinates.lat, coordinates.lng);
-export let score = calculateBonus(distance);
-
-//export let TotalScore = TotalScore + score;
-
-//export let round = 1;
-
-function MyComponent({ markerValue, guessLocation }) {
+function MyComponent({ markerValue, locationNumber }) {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA",
   });
 
+  let coordinateStreetView = coordinates[locationNumber][0]
+
   const mapOptions = {
-    styleControl: false,
-    mapTypeControl: false,
-    streetViewControl: false,
-    zoomControl: false,
-    fullscreenControl: false,
+    disableDefaultUI: true,
   };
 
   const PolylineOptions = {
@@ -73,37 +34,24 @@ function MyComponent({ markerValue, guessLocation }) {
     zIndex: 1,
   };
 
-  // const _handleNextRound = () => {
-  //   setRound(round + 1);
-  //   guessLocation();
-  // }
-
-  console.log(GuessMap.selectedLocation);
-
-  console.log(123123, markerValue)
-  console.log('cords', coordinates)
-
   let clickedMarkerValues = {lat: markerValue[0], lng: markerValue[1]}
-  console.log('test', clickedMarkerValues);
 
   const PolyLineBetweenGuessAndCorrect = [
     { lat: clickedMarkerValues.lat, lng: clickedMarkerValues.lng },
-    { lat: coordinates.lat, lng: coordinates.lng },
+    { lat: coordinateStreetView.lat, lng: coordinateStreetView.lng },
   ];
-
-
 
   return isLoaded ? (
     <div>
       <GoogleMap
         className="window-map"
         mapContainerStyle={containerStyle}
-        center={coordinates}
-        zoom={3}
+        center={coordinateStreetView}
+        zoom={2}
         options={mapOptions}
         clickableIcons={false}
       >
-        {clickedMarkerValues.lat ? <Marker position={coordinates} clickable={false} /> : null }
+        {clickedMarkerValues.lat ? <Marker position={coordinateStreetView} clickable={false} /> : null }
         {clickedMarkerValues.lat ?  <Marker position={clickedMarkerValues} clickable={false} /> : null}
         {clickedMarkerValues.lat ? <Polyline path={PolyLineBetweenGuessAndCorrect} options={PolylineOptions} /> : null}
         <></>

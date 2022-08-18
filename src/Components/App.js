@@ -14,7 +14,6 @@ import Home from './Home';
 import Navbar from './NavBar';
 
 
-
 export default function App() {
   const [session, setSession] = useState(null)
 
@@ -30,16 +29,15 @@ export default function App() {
     <BrowserRouter>
       <Navbar/>
     <div className="container">
+       <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="PlayTrip" element={<PlayTrip />} />
+           <Route path="CorrectMap" element={<Map />} /> 
+           <Route path="Quizform" element={<QuizForm />} />
+           <Route path="Quiz" element={<QuizParent />} />
+           <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
 
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="PlayTrip" element={<PlayTrip />} />
-          <Route path="CorrectMap" element={<Map />} /> 
-          <Route path="Quizform" element={<QuizForm />} />
-          <Route path="Quiz" element={<QuizParent />} />
-          <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
-          <Route path="Account" element={!session ? (
-
+           <Route path="LogIn" element={!session ? (
         <Auth />
       ) : (
         <Account key={session.user.id} session={session} />
