@@ -3,7 +3,7 @@ import supabase from "../supabaseClient";
 import { useState, useEffect } from "react";
 
 
-function Quiz() {
+function Quiz(props) {
   const [quizes, setQuizes] = useState([]);
   const [content, setContent] = useState('');
 

@@ -5,10 +5,10 @@ import supabase from "../../supabaseClient";
 
 
 const defaultRemainingTime = {
-    seconds: '00',
-    minutes: '00',
-    hours: '24',
-    days: '00'
+    // seconds: '00',
+    // minutes: '00',
+    // hours: '00',
+    // days: '00'
 }
 
 const CountdownTimer = ({countdownTimestampMs}) => {
@@ -28,8 +28,9 @@ const CountdownTimer = ({countdownTimestampMs}) => {
 
         if (seconds + minutes + hours + days <= 0) {
             setRemainingTime(defaultRemainingTime);
-            eraseSubmission();
-            fetchRandomQuiz();
+           
+            // props.eraseSubmissions();
+            // props.fetchRandomQuiz();
         }
         
     }

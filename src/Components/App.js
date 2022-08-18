@@ -11,6 +11,7 @@ import QuizParent from './QuizParent';
 import CountdownTimer from './CountdownTimer/CountdownTimer';
 import Home from './Home';
 import Navbar from './NavBar';
+import TotalScore from './TotalScore';
 
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="CorrectMap" element={<Map />} /> 
           <Route path="Quizform" element={<QuizForm />} />
           <Route path="Quiz" element={<QuizParent />} />
+          <Route path="Totalscore" element={<TotalScore />} />
           <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
           <Route path="Account" element={!session ? (
         <Auth />

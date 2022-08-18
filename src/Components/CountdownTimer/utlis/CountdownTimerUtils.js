@@ -5,10 +5,10 @@ export function getRemainingTimeUntilMsTimestamp(timestampMs) {
     const nowDayjs = dayjs();
     if(timestampDayjs.isBefore(nowDayjs)) {
         return {
-            seconds: '32',
-            minutes: '23',
-            hours: '05',
-            days: '02'
+            seconds: '00',
+            minutes: '00',
+            hours: '00',
+            days: '00'
         }
     }
     return {

@@ -7,7 +7,7 @@ function QuizParent () {
     const [currentQuiz, setCurrentQuiz] = useState('');
 
 
-    async function fetchRandomQuiz(){
+    async function fetchRandomQuiz(props){
        let {data: quizes}  = await supabase
       .from('New Quizes')
       .select('*')
@@ -21,7 +21,7 @@ function QuizParent () {
             setCurrentQuiz(data[randomIndex].content);
         }
     }
-    async function eraseSubmission () {
+    async function eraseSubmission (props) {
        let { data: quizes } = await supabase
       .from('New Quizes')
       .select('*')
@@ -52,7 +52,6 @@ function QuizParent () {
         <div>
             <h2>{ currentQuiz }</h2>
             <Quiz />
-            <CountdownTimer countdownTimestampMs={1628454873000}/>
             <CountdownTimer eraseSubmission={ eraseSubmission } fetchRandomQuiz={ fetchRandomQuiz } />
 
         </div>
