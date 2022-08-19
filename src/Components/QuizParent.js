@@ -45,11 +45,7 @@ function QuizParent () {
         eraseSubmission();
         fetchRandomQuiz();
 
-        
       }, []);
-
-        // setcurrentQuiz();
-
 
     return(
         <div className="quizText">
