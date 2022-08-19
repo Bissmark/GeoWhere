@@ -120,6 +120,10 @@ body, html {
   margin-left: 300px;
 }
 
+.submitButton {
+  margin-top: 15px;
+}
+
 .quizHeading {
   font-size: 40px;
 }

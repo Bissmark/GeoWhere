@@ -52,7 +52,7 @@ function QuizParent () {
 
 
     return(
-        <div className="quizText">
+        <div className="quiz text-yellow-500 text-center my-10">
             <h2>{ currentQuiz }</h2>
             <Quiz />
             <CountdownTimer eraseSubmission={ eraseSubmission } fetchRandomQuiz={ fetchRandomQuiz } />
