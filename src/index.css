@@ -173,8 +173,7 @@ img {
   background-color: #FACC15;
   color: #0F172A;
   position: relative;
-  left: 300px;
-  bottom: 25px;
+  top: 100px;
   z-index: 6;
   width: 200px;
   height: 40px;
@@ -214,8 +213,8 @@ img {
 .timer {
   display: inline-block;
   position: relative;
-  width: 180px;
-  max-width: 180px;
+  width: 200px;
+  max-width: 200px;
   bottom: 600px;
   font-size: 30px;
   z-index: 2;
@@ -252,16 +251,7 @@ code {
 }
 
 .congrats {
-  display: inline-block;
-  background-color: #FACC15;
-  color: #0F172A;
-  position: relative;
-  left: 500px;
-  bottom: 15px;
-  z-index: 6;
-  width: 200px;
-  height: 40px;
-  border-radius: 10px;
+  color: #FACC15;
   text-align: center;
-  padding: 7px;
+  font-size: 8em;
 }
