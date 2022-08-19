@@ -1,51 +1,51 @@
 import { useState, useEffect } from "react";
-import { getRemainingTimeUntilMsTimestamp } from './utlis/CountdownTimerUtils';
 import QuizParent from "../Quiz/QuizParent";
 import supabase from "../../supabaseClient";
+import React, { Component } from "react";
 
-
-const defaultRemainingTime = {
-    seconds: '00',
-    minutes: '00',
-    hours: '24',
-    days: '00'
-}
-
-const CountdownTimer = ({countdownTimestampMs}) => {
-    const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            updateRemainingTime(countdownTimestampMs);
-        }, 1000);
-        return () => clearInterval(intervalId);
-    },[countdownTimestampMs]);
-
-    function updateRemainingTime(countdown) {
-        setRemainingTime(getRemainingTimeUntilMsTimestamp(countdown));
-        // conditional goes here that triggers prop methods when timer hits ZERO
-        const { seconds, minutes, hours, days } = remainingTime;
-
-        if (seconds + minutes + hours + days <= 0) {
-            setRemainingTime(defaultRemainingTime);
-            //eraseSubmission();
-            //fetchRandomQuiz();
-        }
-
+class CountdownTimer extends Component {
+    state = {
+        minutes: 60,
+        seconds: 0
     }
 
-    return(
-        <div className="countdown-timer">
-            <span>{remainingTime.days}</span>
-            <span>days</span>
-            <span className="two-numbers">{remainingTime.hours}</span>
-            <span>hours</span>
-            <span className="two-numbers">{remainingTime.minutes}</span>
-            <span>minutes</span>
-            <span className="two-numbers">{remainingTime.seconds}</span>
-            <span>seconds</span>
-        </div>
-    );
+    componentDidMount() {
+        this.myInterval = setInterval(() => {
+            const { seconds, minutes } = this.state
+
+            if (seconds > 0) {
+                this.setState(({ seconds }) => ({
+                    seconds: seconds - 1
+                }))
+            }
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    this.props.eraseSubmission();
+                    this.props.fetchRandomQuiz();
+                    this.setState({ minutes: 0, seconds: 5});
+                } else {
+                    this.setState(({ minutes }) => ({
+                        minutes: minutes - 1,
+                        seconds: 59
+                    }))
+                }
+            }
+        }, 1000)
+    }
+
+
+    render() {
+        const { minutes, seconds } = this.state
+
+        return (
+            <div>
+                { minutes === 0 && seconds === 0
+                    ? <p>Time up!</p>
+                    :   <p>Timer: { minutes }:{ seconds < 10 ? `0${ seconds }` : seconds }</p>
+                }
+            </div>
+        )
+    }
 }
 
 export default CountdownTimer;
