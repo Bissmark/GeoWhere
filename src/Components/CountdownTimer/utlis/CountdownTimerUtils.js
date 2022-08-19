@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 export function getRemainingTimeUntilMsTimestamp(timestampMs) {
     const timestampDayjs = dayjs(timestampMs);
+    console.log(timestampDayjs);
     const nowDayjs = dayjs();
     if(timestampDayjs.isBefore(nowDayjs)) {
         return {

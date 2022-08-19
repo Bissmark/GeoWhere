@@ -36,7 +36,6 @@ export default function App() {
           <Route path="Quizform" element={<QuizForm />} />
           <Route path="Quiz" element={<QuizParent />} />
           <Route path="Totalscore" element={<TotalScore />} />
-          <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />
           <Route path="Account" element={!session ? (
         <Auth />
       ) : (
