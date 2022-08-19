@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getRemainingTimeUntilMsTimestamp } from './utlis/CountdownTimerUtils';
-import QuizParent from "../QuizParent";
+import QuizParent from "../Quiz/QuizParent";
 import supabase from "../../supabaseClient";
 
 

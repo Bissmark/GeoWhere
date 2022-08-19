@@ -1,16 +1,16 @@
 import React from 'react';
-import PlayTrip from './PlayTrip';
+import PlayTrip from './Maps/PlayTrip';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Map from "./Map";
+import Map from "./Maps/Map";
 import { useState, useEffect } from 'react'
 import supabase from '../supabaseClient'
 import Auth from './Auth'
 import Account from './Account'
-import QuizForm from './Quizform';
-import QuizParent from './QuizParent';
+import QuizForm from './Quiz/Quizform';
+import QuizParent from './Quiz/QuizParent';
 import CountdownTimer from './CountdownTimer/CountdownTimer';
-import Home from './Home';
-import Navbar from './NavBar';
+import Home from './UI/Home';
+import Navbar from './UI/NavBar';
 
 
 export default function App() {
@@ -31,7 +31,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="PlayTrip" element={<PlayTrip />} />
-          <Route path="CorrectMap" element={<Map />} /> 
           <Route path="Quizform" element={<QuizForm />} />
           <Route path="Quiz" element={<QuizParent />} />
           <Route path="Countdowntimer" element={<CountdownTimer countdownTimestampMs={1628454873000} />} />

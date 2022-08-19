@@ -1,3 +1,4 @@
+// Calculates the distance as the Crow flies
 function calcCrow(lat1, lon1, lat2, lon2) {
     const R = 6371; // km
     const dLat = toRad(lat2 - lat1);
@@ -20,6 +21,7 @@ function calculateBonus(km) {
     return Math.round(temp > 1 ? 10000 : temp * 10000);
 }
 
+// Calculates the distance between 2 coordinates
 export const calculateDistance = (lat1, lng1, lat2, lng2) => {
     let d = calcCrow(lat1, lng1, lat2, lng2);
     return calculateBonus(d);

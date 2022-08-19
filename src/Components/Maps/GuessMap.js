@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
+// Value used for where the camera centers on
 const center = {
   lat: 0,
   lng: -180
 };
 
+// Size of the Guessing map inside streetview
 const containerStyle = {
   width: '400px',
   height: '200px',
@@ -20,6 +22,7 @@ export default function GuessMap({ updateMarkers, guessLocation }) {
         googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
     })
 
+    // Sets the marker location based on a LatLng of where the User clicks
     const _handleMapClick = (ev, lat, lng) => {
         setSelected(true);
         setSelectedLocation(ev.latLng);
@@ -34,6 +37,7 @@ export default function GuessMap({ updateMarkers, guessLocation }) {
         disableDefaultUI: true
     }
 
+    // Showing the GuessMap, where you can put a marker on and the guess button
     return isLoaded ? (
         <div className="guessLocation">
             <GoogleMap

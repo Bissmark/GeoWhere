@@ -3,12 +3,12 @@ import GuessMap from "./GuessMap";
 import Streetview from "./Streetview";
 import Map from "./Map";
 import { useState } from "react";
-import { calculateDistance } from "../Utils/DistanceCalc";
-import { locationCoordinates } from "./Locations";
-import { Results } from "./Results";
-import Score from "./Score";
-import TotalScore from "./TotalScore";
-import Round from "./Round";
+import { calculateDistance } from "../../Utils/DistanceCalc";
+import { locationCoordinates } from "../../Utils/Locations";
+import { Results } from "../UIGame/Results";
+import Score from "../UIGame/Score";
+import TotalScore from "../UIGame/TotalScore";
+import Round from "../UIGame/Round";
 
 function randomIntFromInterval() {
   return Math.floor(Math.random() * (locationCoordinates.length - 1 - 0 + 1) + 0);
@@ -34,6 +34,7 @@ function PlayTrip() {
     setMarkerLocation([lat,lng]);
   };
 
+  // change the view from 1 page to another, update the score for current round
   const guessLocation = () => {
     setView(view ? view - 1 : view + 1);
     updateRoundScore();
@@ -45,6 +46,7 @@ function PlayTrip() {
     setRound(round + 1);
   };
 
+  // Calcuate the points based on the distance between the 2 coordinates, add to total score
   const updateRoundScore = () => {
     let originalLocationCoords = locationCoordinates[locationNumber][0];
     let points = guessLocation
@@ -54,6 +56,7 @@ function PlayTrip() {
       setTotalScore(totalScore + points);
   }
 
+  // if its the 6th round show results page else if on round 1-5 show either the guessing map or the results map
   return (
       <div>
           { round === 6 && (

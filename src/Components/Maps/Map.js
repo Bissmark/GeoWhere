@@ -2,13 +2,14 @@ import React from "react";
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
 import { coordinates } from "./Streetview";
 
+// Size of Map window
 const containerStyle = {
   width: "1200px",
   height: "600px",
 };
 
 function MyComponent({ markerValue, locationNumber }) {
-
+  // Loads google api key
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA",
@@ -20,6 +21,7 @@ function MyComponent({ markerValue, locationNumber }) {
     disableDefaultUI: true,
   };
 
+  // UI options for the line betwee 2 points
   const PolylineOptions = {
     strokeColor: "#FF0000",
     strokeOpacity: 0.8,
@@ -36,11 +38,15 @@ function MyComponent({ markerValue, locationNumber }) {
 
   let clickedMarkerValues = {lat: markerValue[0], lng: markerValue[1]}
 
+  // Line between the 2 coordinates
   const PolyLineBetweenGuessAndCorrect = [
     { lat: clickedMarkerValues.lat, lng: clickedMarkerValues.lng },
     { lat: coordinateStreetView.lat, lng: coordinateStreetView.lng },
   ];
 
+  // Showing the Map with the 2 markers, 1 which are the coordinates of the streetview location
+  // And the other is the coordinates of where the user clicked
+  // Creates the line between those points with the path from before
   return isLoaded ? (
     <div>
       <GoogleMap

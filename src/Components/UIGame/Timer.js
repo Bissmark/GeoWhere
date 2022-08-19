@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Results } from "./Results";
 
+// Variable which allows in a different page to show when the game ends
 export let timerZero;
 
 class Timer extends Component {
