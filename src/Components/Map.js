@@ -47,14 +47,13 @@ function MyComponent({ markerValue, locationNumber }) {
         className="window-map"
         mapContainerStyle={containerStyle}
         center={coordinateStreetView}
-        zoom={2}
+        zoom={3}
         options={mapOptions}
         clickableIcons={false}
       >
         {clickedMarkerValues.lat ? <Marker position={coordinateStreetView} clickable={false} /> : null }
         {clickedMarkerValues.lat ?  <Marker position={clickedMarkerValues} clickable={false} /> : null}
         {clickedMarkerValues.lat ? <Polyline path={PolyLineBetweenGuessAndCorrect} options={PolylineOptions} /> : null}
-        <></>
       </GoogleMap>
     </div>
   ) : (

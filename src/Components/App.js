@@ -42,7 +42,6 @@ export default function App() {
         <Account key={session.user.id} session={session} />
       )} />
       </Routes>
-
       </div>
       </BrowserRouter>
   );

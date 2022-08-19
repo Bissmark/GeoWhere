@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
 * {
   margin: 0 auto;
 }
@@ -14,15 +25,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   background-color: #282c34;
+
+
+}
+
+body, html {
+  background-image: url("Earthview.jpg");
+  height: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #222
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 600;
 }
 
 .navBar {
   text-align: center;
 }
 
-.score {
-  position: relative;
-  z-index: 10;
+.quizText{
+  color: #FACC15;
 }
 
 .guessButton {
@@ -42,17 +68,6 @@ body {
   animation: bounce 1s infinite;
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(-15%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-}
-
 .guessLocation {
   display: inline-block;
   position: relative;
@@ -60,12 +75,10 @@ body {
   bottom: 330px;
   z-index: 5;
   opacity: 0.3;
-  /* transform: scale3d(0.4, 0.4); */
 }
 
 .guessLocation:hover {
   display: inline-block;
-  /* transform: scale3d(1.2, 1.2); */
   position: relative;
   left: 600px;
   bottom: 330px;
@@ -95,6 +108,34 @@ body {
   margin-left: -40px;
 }
 
+.quiz {
+  text-align: center;
+  background-color: #282C34;
+  opacity: 0.8;
+  padding: 1em 1em 1em 1em;
+  border-radius: 20px;
+}
+
+.quizButton {
+  margin-left: 300px;
+}
+
+.quizHeading {
+  font-size: 40px;
+}
+
+.quizHeading2 {
+  font-size: 25px;
+}
+
+.tutorial {
+  background-color: #282C34;
+  border-radius: 10px;
+  margin: 30px 0;
+  padding: 2em;
+  opacity: 0.8;
+}
+
 nav {
   width: 100%;
   padding: 1em;
@@ -109,11 +150,18 @@ img {
   color: #0F172A;
   position: relative;
   left: 500px;
-  bottom: 20px;
+  bottom: 15px;
   z-index: 6;
   width: 150px;
   height: 40px;
   border-radius: 10px;  
+  margin: 30px 0px 20px 0px;
+}
+
+.nextRound:hover {
+  transform: scale(1.2);
+  background-color: #C2410C;
+  animation: bounce 1s infinite;
 }
 
 .finalScore {
@@ -135,12 +183,13 @@ img {
   background-color: #FACC15;
   color: #0F172A;
   position: relative;
-  bottom: 25px;
+  bottom: 15px;
   z-index: 6;
   width: 200px;
   height: 40px;
   border-radius: 10px;
   text-align: center;
+  padding: 7px;
 }
 
 .totalScore {
@@ -149,12 +198,13 @@ img {
   color: #0F172A;
   position: relative;
   left: 500px;
-  bottom: 25px;
+  bottom: 15px;
   z-index: 6;
   width: 200px;
   height: 40px;
   border-radius: 10px;
   text-align: center;
+  padding: 7px;
 }
 
 .timer {
@@ -169,6 +219,7 @@ img {
   background-color: slategrey;
   padding: 15px;
   border-radius: 0 5px 5px 0;
+  opacity: 0.75;
 }
 
 .round {
@@ -176,14 +227,15 @@ img {
   position: relative;
   width: 180px;
   max-width: 180px;
-  bottom: 600px;
-  left: 640px;
+  top: 75px;
+  left: 820px;
   font-size: 30px;
   z-index: 2;
   color: #FACC15;
   background-color: slategrey;
   padding: 15px;
   border-radius: 5px 0 0 5px;
+  opacity: 0.75;
 }
 
 p {
@@ -193,4 +245,19 @@ p {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.congrats {
+  display: inline-block;
+  background-color: #FACC15;
+  color: #0F172A;
+  position: relative;
+  left: 500px;
+  bottom: 15px;
+  z-index: 6;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 7px;
 }
