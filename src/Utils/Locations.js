@@ -1,3 +1,4 @@
+// Set coordinates for our locations in Steetview
 export const locationCoordinates = [
     [{ lat: 36.385822,  lng: 127.496827 }, {country: 'South Korea'}], 
     [{ lat: 29.9756934,  lng: 31.1385296 }, {country: 'Eqypt'}], 

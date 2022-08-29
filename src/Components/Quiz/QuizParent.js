@@ -1,7 +1,7 @@
-import CountdownTimer from "./CountdownTimer/CountdownTimer";
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import Quiz from "./Quiz";
 import { useEffect, useState } from 'react';
-import supabase from "../supabaseClient";
+import supabase from "../../supabaseClient";
 
 function QuizParent () {
     const [currentQuiz, setCurrentQuiz] = useState('');
@@ -29,13 +29,15 @@ function QuizParent () {
       const quizIDs = quizes.map((quiz) => {
         return (quiz.id);
       });
+      console.log(quizIDs)
 
       quizIDs.forEach( async (ID) => {
-        const { data, error } = await supabase
+        console.log('deleting quiz', ID)
 
-      .from('quizes')
-      .delete()
-      .match({id: ID});
+        const { data, error } = await supabase
+        .from('quizes')
+        .delete()
+        .match({id: ID});
 
       });
     }
@@ -48,7 +50,7 @@ function QuizParent () {
       }, []);
 
     return(
-        <div className="quizText">
+        <div className="quiz text-yellow-500 text-center my-10">
             <h2>{ currentQuiz }</h2>
             <Quiz />
             <CountdownTimer eraseSubmission={ eraseSubmission } fetchRandomQuiz={ fetchRandomQuiz } />

@@ -28,7 +28,7 @@ const QuizForm = () => {
         </div>
     </>
     <></>
-    <Link className="quizButton bg-yellow-400 hover:bg-orange-700 active:animate-ping text-slate font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" to= "/QuizParent">Create Quiz</Link>
+    <Link className="quizButton bg-yellow-400 hover:bg-orange-700 active:animate-ping text-slate font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" to= "/Quiz">Create Quiz</Link>
     </>
     
     );
