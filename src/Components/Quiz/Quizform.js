@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const QuizForm = () => {
     return (
-        <div className="bg-fixed text-center text-yellow-500">
+        <div className="bg-fixed text-center text-yellow-500 pb-5">
             <div className="mt-5 mr-8 ml-8 ">
                 <h1 className=" text-3xl font-bold mb-2">Host a quiz</h1>
                 <h4>Take on the role as host, and create an event with both locations and quizzes. Who will come out on top?
@@ -24,7 +24,7 @@ const QuizForm = () => {
                 <h2>Customize the quiz</h2>
                 <h4>Add fun questions or pick particular locations around the world.</h4>
             </div>
-            <Link className="text-xl focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 rounded-lg px-5 dark:focus:ring-yellow-900" to= "/Quiz">Create Quiz</Link>    
+            <Link className="text-xl focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900" to= "/Quiz">Create Quiz</Link>    
         </div>
     );
 };
