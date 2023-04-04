@@ -25,9 +25,9 @@ export default function App() {
   // }, [])
 
   return (
-    <BrowserRouter>
-      <Navbar/>
-    <div className="container">
+    <div className="bg-home-picture h-screen bg-cover bg-no-repeat bg-center bg-fixed body-font font-cagliostro">
+      <BrowserRouter>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="PlayTrip" element={<PlayTrip />} />
@@ -39,8 +39,8 @@ export default function App() {
       // ) : (
       //   <Account key={session.user.id} session={session} />
       // )} /> */}
-      </Routes>
-      </div>
+        </Routes>
       </BrowserRouter>
+    </div>
   );
 }
