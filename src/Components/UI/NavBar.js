@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-
     <nav className="navBar flex justify-center ">
       <ul className="flex">
         <li className="mr-6">

@@ -23,7 +23,7 @@ function randomIntFromIntervalNotSameOne(oldNum) {
 }
 
 function PlayTrip() {
-  const [view, setView] = useState(0);
+  const [view, setView] = useState('');
   const [markerLocation, setMarkerLocation] = useState([]);
   const [locationNumber, setLocationNumber] = useState(randomIntFromInterval());
   const [round, setRound] = useState(1);
@@ -34,10 +34,11 @@ function PlayTrip() {
     setMarkerLocation([lat,lng]);
   };
 
-  // change the view from 1 page to another, update the score for current round
+  // change the view from 1 page to another, update the score for current round, this is the place that the 0 on the bottom of the screen is located
   const guessLocation = () => {
     setView(view ? view - 1 : view + 1);
     updateRoundScore();
+    console.log(view);
   };
 
   const nextRound = () => {

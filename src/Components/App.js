@@ -13,17 +13,16 @@ import Home from './UI/Home';
 import Navbar from './UI/NavBar';
 import TotalScore from './UIGame/TotalScore';
 
-
 export default function App() {
-  const [session, setSession] = useState(null)
+  // const [session, setSession] = useState(null)
 
-  useEffect(() => {
-    setSession(supabase.auth.session())
+  // useEffect(() => {
+  //   setSession(supabase.auth.session())
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+  //   supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   })
+  // }, [])
 
   return (
     <BrowserRouter>
@@ -35,11 +34,11 @@ export default function App() {
           <Route path="Quizform" element={<QuizForm />} />
           <Route path="Quiz" element={<QuizParent />} />
           <Route path="Totalscore" element={<TotalScore />} />
-          <Route path="Account" element={!session ? (
-        <Auth />
-      ) : (
-        <Account key={session.user.id} session={session} />
-      )} />
+          {/* <Route path="Account" element={!session ? (
+      //   <Auth />
+      // ) : (
+      //   <Account key={session.user.id} session={session} />
+      // )} /> */}
       </Routes>
       </div>
       </BrowserRouter>

@@ -25,13 +25,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   background-color: #282c34;
-
-
 }
 
 body, html {
   background-image: url("Earthview.jpg");
-  height: 130%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,7 +54,7 @@ body, html {
   position: relative;
   left: 130px;
   top: 10px;
-  z-index: 6;
+  z-index: 1;
   width: 150px;
   height: 40px;
   border-radius: 10px;

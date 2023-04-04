@@ -4,16 +4,10 @@ import supabase from "../../supabaseClient";
 function Score({ newRoundScore }) {
     const [scores, setScores] = useState([]);
   
-    
     useEffect(() => {
       fetchScore()
     }, []);
-  
-  
-    function handleScore(e) {
-      setScores(e.target.onClick);
-    }
-  
+    
     async function fetchScore() {
       let { data } = await supabase
       .from('scores')

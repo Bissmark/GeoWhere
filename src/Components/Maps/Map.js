@@ -1,11 +1,12 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker, Polyline } from "@react-google-maps/api";
 import { coordinates } from "./Streetview";
+import './Map.css'
 
 // Size of Map window
 const containerStyle = {
   width: "1200px",
-  height: "600px",
+  height: "500px",
 };
 
 function MyComponent({ markerValue, locationNumber }) {
@@ -21,7 +22,7 @@ function MyComponent({ markerValue, locationNumber }) {
     disableDefaultUI: true,
   };
 
-  // UI options for the line betwee 2 points
+  // UI options for the line between 2 points
   const PolylineOptions = {
     strokeColor: "#FF0000",
     strokeOpacity: 0.8,
