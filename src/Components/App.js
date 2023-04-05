@@ -25,9 +25,9 @@ export default function App() {
   // }, [])
 
   return (
-    <div className="bg-home-picture max-h-fit bg-cover bg-no-repeat bg-center body-font font-cagliostro">
+    <div className="bg-home-picture bg-cover body-font font-cagliostro">
       <BrowserRouter>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="PlayTrip" element={<PlayTrip />} />

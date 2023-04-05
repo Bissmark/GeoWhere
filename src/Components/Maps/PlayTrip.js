@@ -59,7 +59,7 @@ function PlayTrip() {
 
   // if its the 6th round show results page else if on round 1-5 show either the guessing map or the results map
   return (
-      <div>
+      <div className="h-screen">
           { round === 6 && (
             <div>
               <Results totalScore={ totalScore }/>
@@ -74,7 +74,7 @@ function PlayTrip() {
           )}
           { round !== 6 && view && (
             <div>
-              <button className="nextRound" onClick={ nextRound }>
+              <button className="" onClick={ nextRound }>
                 { round !== 5 ? 'Next Round' : 'Finish' }
               </button>
               <Score newRoundScore={ newRoundScore }/>

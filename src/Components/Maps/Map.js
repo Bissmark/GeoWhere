@@ -13,7 +13,7 @@ function MyComponent({ markerValue, locationNumber }) {
   // Loads google api key
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA",
+    googleMapsApiKey: process.env.REACT_APP_API_KEY,
   });
 
   let coordinateStreetView = coordinates[locationNumber][0]
@@ -37,7 +37,7 @@ function MyComponent({ markerValue, locationNumber }) {
     zIndex: 1,
   };
 
-  let clickedMarkerValues = {lat: markerValue[0], lng: markerValue[1]}
+  let clickedMarkerValues = { lat: markerValue[0], lng: markerValue[1] }
 
   // Line between the 2 coordinates
   const PolyLineBetweenGuessAndCorrect = [
@@ -49,17 +49,17 @@ function MyComponent({ markerValue, locationNumber }) {
   // And the other is the coordinates of where the user clicked
   // Creates the line between those points with the path from before
   return isLoaded ? (
-    <div>
+    <div className="">
       <GoogleMap
-        className="window-map"
+        className=""
         mapContainerStyle={containerStyle}
         center={coordinateStreetView}
         zoom={3}
         options={mapOptions}
         clickableIcons={false}
       >
-        {clickedMarkerValues.lat ? <Marker position={coordinateStreetView} clickable={false} /> : null }
-        {clickedMarkerValues.lat ?  <Marker position={clickedMarkerValues} clickable={false} /> : null}
+        {clickedMarkerValues.lat ? <Marker position={coordinateStreetView} clickable={false} /> : null}
+        {clickedMarkerValues.lat ? <Marker position={clickedMarkerValues} clickable={false} /> : null}
         {clickedMarkerValues.lat ? <Polyline path={PolyLineBetweenGuessAndCorrect} options={PolylineOptions} /> : null}
       </GoogleMap>
     </div>

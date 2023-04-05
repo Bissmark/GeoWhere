@@ -19,7 +19,7 @@ export default function GuessMap({ updateMarkers, guessLocation }) {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
+        googleMapsApiKey: process.env.REACT_APP_API_KEY
     })
 
     // Sets the marker location based on a LatLng of where the User clicks
@@ -39,7 +39,7 @@ export default function GuessMap({ updateMarkers, guessLocation }) {
 
     // Showing the GuessMap, where you can put a marker on and the guess button
     return isLoaded ? (
-        <div className="guessLocation">
+        <div className=" max-h-6">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

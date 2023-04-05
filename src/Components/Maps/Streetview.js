@@ -14,7 +14,7 @@ function MyComponent({ locationNumber }) {
   // gets google api key
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCciF-YDKAm5YDHP2qJLlKJb0gZPtvSYTA"
+    googleMapsApiKey: process.env.REACT_APP_API_KEY
   })
 
   // visual options for Streetview
@@ -29,17 +29,18 @@ function MyComponent({ locationNumber }) {
 
   // Show Streetview inside a good map, show timer on streetview page
   return isLoaded ? (
-    <div>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        addressControl={false}
-      >
-        <StreetViewPanorama
-        position={ locationCoordinates[locationNumber][0] }
-        options={panoOptions}
-      />
-      </GoogleMap>
-        <div className="timer">
+    <div className=''>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          addressControl={false}
+        >
+          <StreetViewPanorama
+          position={ locationCoordinates[locationNumber][0] }
+          options={panoOptions}
+        />
+        </GoogleMap>
+      
+        <div className=" p-4 z-2 ">
           <Timer />
         </div>
    </div>
